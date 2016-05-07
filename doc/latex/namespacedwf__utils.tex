@@ -1,0 +1,145 @@
+\hypertarget{namespacedwf__utils}{\section{dwf\-\_\-utils \-Namespace \-Reference}
+\label{namespacedwf__utils}\index{dwf\-\_\-utils@{dwf\-\_\-utils}}
+}
+
+
+\-A namespace used to regroup all utilitary functions or classes spanning through multiple applications.  
+
+
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classdwf__utils_1_1dir_parser}{dir\-Parser}
+\begin{DoxyCompactList}\small\item\em \-Class for working directory and program location parsing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\std\-::string \hyperlink{namespacedwf__utils_a8d5fd742236b24c89ab4d86fc6de8d90}{to\-String} (const \-T data)
+\begin{DoxyCompactList}\small\item\em \-Can convert a data of type \-T to string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\-T \hyperlink{namespacedwf__utils_ab7a1197277dabab560c4c31e9e5f1966}{from\-String} (const std\-::string s)
+\begin{DoxyCompactList}\small\item\em \-Can convert a string to a data of type \-T. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\int \hyperlink{namespacedwf__utils_a93edff37ebf0c45e11d716f399871507}{str\-Serialize} (std\-::string \&serial, const \-T to\-Add, const std\-::string separator=\char`\"{};\char`\"{}, const unsigned int max\-Size=0)
+\begin{DoxyCompactList}\small\item\em \-To serialize a data into a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\int \hyperlink{namespacedwf__utils_a4b66259f51bd8a3921398be3ae511efe}{str\-Deserialize} (std\-::string serial, \-T \&extracted, unsigned int \&pos, const std\-::string separator=\char`\"{};\char`\"{})
+\begin{DoxyCompactList}\small\item\em \-To deserialize a data from a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A namespace used to regroup all utilitary functions or classes spanning through multiple applications. 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{namespacedwf__utils_ab7a1197277dabab560c4c31e9e5f1966}{\index{dwf\-\_\-utils@{dwf\-\_\-utils}!from\-String@{from\-String}}
+\index{from\-String@{from\-String}!dwf_utils@{dwf\-\_\-utils}}
+\subsubsection[{from\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ \-T {\bf dwf\-\_\-utils\-::from\-String} (
+\begin{DoxyParamCaption}
+\item[{const std\-::string}]{s}
+\end{DoxyParamCaption}
+)}}\label{namespacedwf__utils_ab7a1197277dabab560c4c31e9e5f1966}
+
+
+\-Can convert a string to a data of type \-T. 
+
+
+\begin{DoxyTemplParams}{\-Template Parameters}
+{\em \-T} & \-: type of the data to get \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{\-Parameters}
+{\em s} & \-: string to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+data of type \-T
+\end{DoxyReturn}
+\-Templated \-Function to convert a string to a data of type \-T. \-Especially used for deserialization. \-T must contain operator$>$$>$ and a default constructor. \hypertarget{namespacedwf__utils_a4b66259f51bd8a3921398be3ae511efe}{\index{dwf\-\_\-utils@{dwf\-\_\-utils}!str\-Deserialize@{str\-Deserialize}}
+\index{str\-Deserialize@{str\-Deserialize}!dwf_utils@{dwf\-\_\-utils}}
+\subsubsection[{str\-Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf dwf\-\_\-utils\-::str\-Deserialize} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{serial, }
+\item[{\-T \&}]{extracted, }
+\item[{unsigned int \&}]{pos, }
+\item[{const std\-::string}]{separator = {\ttfamily \char`\"{};\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{namespacedwf__utils_a4b66259f51bd8a3921398be3ae511efe}
+
+
+\-To deserialize a data from a string. 
+
+
+\begin{DoxyTemplParams}{\-Template Parameters}
+{\em \-T} & \-: type of the data to deserialize \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{\-Parameters}
+{\em serial} & \-: string to deserialize \\
+\hline
+{\em extracted} & \-: reference to the extracted element \\
+\hline
+{\em pos} & \-: reference to the position after which to start the extraction. \-Is updated with the position right after the last detected separator to simplify extraction in big chains \\
+\hline
+{\em separator} & \-: const string represensenting the separator used. \-Default is ; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-E\-X\-E\-C\-\_\-\-S\-U\-C\-C\-E\-S\-S if extraction could be done, \-E\-X\-E\-C\-\_\-\-F\-A\-I\-L\-U\-R\-E otherwise (i.\-e. invalid separator for chain or extraction completed)
+\end{DoxyReturn}
+\-Templated \-Function to extract a data of type \-T from a serialized string after a given position. \-T must contain operator$>$$>$ and a default constructor. \hypertarget{namespacedwf__utils_a93edff37ebf0c45e11d716f399871507}{\index{dwf\-\_\-utils@{dwf\-\_\-utils}!str\-Serialize@{str\-Serialize}}
+\index{str\-Serialize@{str\-Serialize}!dwf_utils@{dwf\-\_\-utils}}
+\subsubsection[{str\-Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int {\bf dwf\-\_\-utils\-::str\-Serialize} (
+\begin{DoxyParamCaption}
+\item[{std\-::string \&}]{serial, }
+\item[{const \-T}]{to\-Add, }
+\item[{const std\-::string}]{separator = {\ttfamily \char`\"{};\char`\"{}}, }
+\item[{const unsigned int}]{max\-Size = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{namespacedwf__utils_a93edff37ebf0c45e11d716f399871507}
+
+
+\-To serialize a data into a string. 
+
+
+\begin{DoxyTemplParams}{\-Template Parameters}
+{\em \-T} & \-: type of the data to add to serial \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{\-Parameters}
+{\em serial} & \-: reference to the string containing the serialized data \\
+\hline
+{\em to\-Add} & \-: data to \-Add as a const \\
+\hline
+{\em separator} & \-: const string represensenting the separator used. \-Default is ; \\
+\hline
+{\em max\-Size} & \-: optional maximal size of the serialized string. \-Default is 0, which means size is unlimited \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-E\-X\-E\-C\-\_\-\-S\-U\-C\-C\-E\-S\-S if data could be serialized, \-E\-X\-E\-C\-\_\-\-F\-A\-I\-L\-U\-R\-E otherwise
+\end{DoxyReturn}
+\-Templated \-Function to serialize a data of type \-T into a string and add the separator before the data if serialized string is not empty. \-Can also allow to check if you respect a maximal size for the serialized string. \-T must contain operator$<$$<$. \hypertarget{namespacedwf__utils_a8d5fd742236b24c89ab4d86fc6de8d90}{\index{dwf\-\_\-utils@{dwf\-\_\-utils}!to\-String@{to\-String}}
+\index{to\-String@{to\-String}!dwf_utils@{dwf\-\_\-utils}}
+\subsubsection[{to\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::string {\bf dwf\-\_\-utils\-::to\-String} (
+\begin{DoxyParamCaption}
+\item[{const \-T}]{data}
+\end{DoxyParamCaption}
+)}}\label{namespacedwf__utils_a8d5fd742236b24c89ab4d86fc6de8d90}
+
+
+\-Can convert a data of type \-T to string. 
+
+
+\begin{DoxyTemplParams}{\-Template Parameters}
+{\em \-T} & \-: type of the data to convert \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{\-Parameters}
+{\em data} & \-: the data to convert to string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+data converted as a string
+\end{DoxyReturn}
+\-Templated \-Function to convert a data of type \-T to string. \-Especially used for serialization. \-T must contain operator$<$$<$. 

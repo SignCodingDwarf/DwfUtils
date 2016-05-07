@@ -1,0 +1,36 @@
+\hypertarget{conv_utils_8h}{\section{include/conv\-Utils.h \-File \-Reference}
+\label{conv_utils_8h}\index{include/conv\-Utils.\-h@{include/conv\-Utils.\-h}}
+}
+
+
+\-Definition of type conversion functions.  
+
+
+{\ttfamily \#include $<$string$>$}\*
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$sstream$>$}\*
+\subsection*{\-Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacedwf__utils}{dwf\-\_\-utils}
+\begin{DoxyCompactList}\small\item\em \-A namespace used to regroup all utilitary functions or classes spanning through multiple applications. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\std\-::string \hyperlink{namespacedwf__utils_a8d5fd742236b24c89ab4d86fc6de8d90}{dwf\-\_\-utils\-::to\-String} (const \-T data)
+\begin{DoxyCompactList}\small\item\em \-Can convert a data of type \-T to string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\-T \hyperlink{namespacedwf__utils_ab7a1197277dabab560c4c31e9e5f1966}{dwf\-\_\-utils\-::from\-String} (const std\-::string s)
+\begin{DoxyCompactList}\small\item\em \-Can convert a string to a data of type \-T. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Definition of type conversion functions. \begin{DoxyAuthor}{\-Author}
+\-Sign \-Coding \-Dwarf 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{\-Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{\-Date}
+06 \-May 2016
+\end{DoxyDate}
+\-Definition of functions used to convert datatypes to or from the string type. \-Especially used for serialization in communications. 

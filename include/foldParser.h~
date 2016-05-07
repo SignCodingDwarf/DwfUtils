@@ -1,0 +1,113 @@
+/*!
+ * @file dirParser.h
+ * @brief Class used to parse working directory and program location.
+ * @author Sign Coding Dwarf
+ * @version 1.0
+ * @date 24 April 2016
+ *
+ * Definition of the class used to parse working directory and programm location.
+ * Can be inherited according to application needs to add other folders.
+ * Based on http://stackoverflow.com/questions/143174/how-do-i-get-the-directory-that-a-program-is-running-from
+ *
+ */
+
+#ifndef FOLDPARSER
+#define FOLDPARSER
+
+#include <iostream>
+#include <string>
+
+/*! 
+* @namespace dwf_utils
+* @brief A namespace used to regroup all utilitary functions or classes spanning through multiple applications
+*/
+namespace dwf_utils
+{
+	/*! \class foldParser
+	* \brief Class for working directory and program location parsing
+	*
+	* Class used to parse working directory and program location. Can be inherited according to application needs to define applicative folders.
+	* 
+	*/
+	class foldParser
+	{
+	public:
+		/*!
+		* @brief Constructor of the foldParser class
+		*
+		* Constructor of the foldParser class allowing to initialize the working directory and program location. 
+		*
+		*/
+		foldParser();
+
+		/*!
+		* @brief Destructor of the foldParser class
+		*
+		* Destructor of the foldParser class. Currently does nothing.
+		* Virtual function.
+		*
+		*/
+		virtual ~foldParser(void);
+
+		/*!
+
+		* @brief Know if folders could be loaded
+		* @return TRUE if folders could be loaded and FALSE otherwise
+		*
+		* Know if folder loading process went fine.
+		* Constant function.
+		*
+		*/
+		bool getFoldLoaded() const;
+
+		/*!
+		* @brief Get program location
+		* @return Program location folder as a string terminated by the / or \\ character or an empty string if folder could not be loaded.
+		*
+		* Get main application folder (i.e. folder in which the executable is located).
+		* Constant function.
+		*
+		*/
+		std::string getExeLoc() const;
+
+	protected:
+		/*!
+		* @brief Function used to initialize the working directory and program location.
+		*
+		* Function allowing to initialize the working directory and program location.
+		* Protected function. 
+		*
+		*/
+		void setDir();
+
+		std::string m_exeLoc; /*!< Program Location folder as a string */
+		std::string m_WDir; /*!< Working Directory as a string */
+		bool m_dirLoaded; /*!< Were directories loaded ? */
+	};
+}
+
+#endif
+
+//  ______________________________
+// |                              |
+// |    ______________________    |       
+// |   |                      |   |
+// |   |         sign         |   |
+// |   |        coding        |   |
+// |   |        dw@rf         |   |
+// |   |         1.0          |   |
+// |   |______________________|   |
+// |                              |
+// |______________________________|
+//               |  |           
+//               |  |             
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |__|

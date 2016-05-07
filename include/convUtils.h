@@ -1,0 +1,109 @@
+/*!
+ * @file convUtils.h
+ * @brief Definition of type conversion functions
+ * @author Sign Coding Dwarf
+ * @version 1.0
+ * @date 06 May 2016
+ *
+ * Definition of functions used to convert datatypes to or from the string type. Especially used for serialization in communications.
+ *
+ */
+
+/* 
+Copyright 2016 SignCodingDwarf
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+#ifndef CONV_UTILS
+#define CONV_UTILS
+
+#include <string>
+#include <iostream>
+#include <sstream>
+
+/*! 
+* @namespace dwf_utils
+* @brief A namespace used to regroup all utilitary functions or classes spanning through multiple applications
+*/
+namespace dwf_utils
+{
+	/*!
+	* @brief Can convert a data of type T to string
+	* @tparam T : type of the data to convert
+	* @param data : the data to convert to string
+	* @return data converted as a string
+	*
+	* Templated Function to convert a data of type T to string. Especially used for serialization. T must contain operator<<.
+	*
+	*/
+	template<typename T>
+	std::string toString(const T data)
+	{
+		std::string result;
+		std::stringstream ss;
+
+		ss << data; // typename T must have operator<<. Won't compile otherwise.
+		ss >> result;
+
+		return result;
+	}
+
+	/*!
+	* @brief Can convert a string to a data of type T
+	* @tparam T : type of the data to get
+	* @param s : string to convert
+	* @return data of type T
+	*
+	* Templated Function to convert a string to a data of type T. Especially used for deserialization. T must contain operator>> and a default constructor.
+	*
+	*/
+	template<typename T>
+	T fromString(const std::string s)
+	{
+		T result; // Typename T must have a default constructor. Won't compile otherwise 
+		std::stringstream ss;
+
+		ss << s;
+		ss >> result; // Typename T must have operator>>. Won't compile otherwise.
+
+		return result;
+	}
+}
+
+#endif
+
+//  ______________________________
+// |                              |
+// |    ______________________    |       
+// |   |                      |   |
+// |   |         sign         |   |
+// |   |        coding        |   |
+// |   |        dw@rf         |   |
+// |   |         1.0          |   |
+// |   |______________________|   |
+// |                              |
+// |______________________________|
+//               |  |           
+//               |  |             
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |__|
+

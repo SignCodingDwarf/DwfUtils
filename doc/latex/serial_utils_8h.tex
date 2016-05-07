@@ -1,0 +1,36 @@
+\hypertarget{serial_utils_8h}{\section{include/serial\-Utils.h \-File \-Reference}
+\label{serial_utils_8h}\index{include/serial\-Utils.\-h@{include/serial\-Utils.\-h}}
+}
+
+
+\-Definition of serialization or deserialization functions.  
+
+
+{\ttfamily \#include $<$string$>$}\*
+{\ttfamily \#include \char`\"{}common\-\_\-defines.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}conv\-Utils.\-h\char`\"{}}\*
+\subsection*{\-Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacedwf__utils}{dwf\-\_\-utils}
+\begin{DoxyCompactList}\small\item\em \-A namespace used to regroup all utilitary functions or classes spanning through multiple applications. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\int \hyperlink{namespacedwf__utils_a93edff37ebf0c45e11d716f399871507}{dwf\-\_\-utils\-::str\-Serialize} (std\-::string \&serial, const \-T to\-Add, const std\-::string separator=\char`\"{};\char`\"{}, const unsigned int max\-Size=0)
+\begin{DoxyCompactList}\small\item\em \-To serialize a data into a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\int \hyperlink{namespacedwf__utils_a4b66259f51bd8a3921398be3ae511efe}{dwf\-\_\-utils\-::str\-Deserialize} (std\-::string serial, \-T \&extracted, unsigned int \&pos, const std\-::string separator=\char`\"{};\char`\"{})
+\begin{DoxyCompactList}\small\item\em \-To deserialize a data from a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Definition of serialization or deserialization functions. \begin{DoxyAuthor}{\-Author}
+\-Sign \-Coding \-Dwarf 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{\-Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{\-Date}
+06 \-May 2016
+\end{DoxyDate}
+\-Definition of functions used to serialize and deserialize a flux of data in a string. 

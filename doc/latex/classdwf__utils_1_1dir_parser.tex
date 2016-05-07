@@ -1,0 +1,203 @@
+\hypertarget{classdwf__utils_1_1dir_parser}{\section{dwf\-\_\-utils\-:\-:dir\-Parser \-Class \-Reference}
+\label{classdwf__utils_1_1dir_parser}\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}}
+}
+
+
+\-Class for working directory and program location parsing.  
+
+
+
+
+{\ttfamily \#include $<$include/dir\-Parser.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classdwf__utils_1_1dir_parser_a87df43abb0b6c09f2222d7106b22b2fb}{dir\-Parser} (unsigned int max\-Path\-Length=\-P\-A\-T\-H\-\_\-\-M\-A\-X)
+\begin{DoxyCompactList}\small\item\em \-Constructor of the \hyperlink{classdwf__utils_1_1dir_parser}{dir\-Parser} class. \end{DoxyCompactList}\item 
+virtual \hyperlink{classdwf__utils_1_1dir_parser_a3728fb70aee4a7403dc716e0c275fe05}{$\sim$dir\-Parser} (void)
+\begin{DoxyCompactList}\small\item\em \-Destructor of the \hyperlink{classdwf__utils_1_1dir_parser}{dir\-Parser} class. \end{DoxyCompactList}\item 
+bool \hyperlink{classdwf__utils_1_1dir_parser_ad21b0a168bb9a0113f3a981f59f23b30}{get\-Dir\-Loaded} () const 
+\begin{DoxyCompactList}\small\item\em \-Know if directories could be loaded. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classdwf__utils_1_1dir_parser_a1d20d40355682eb3efe0148a4d370777}{get\-Exe\-Loc} () const 
+\begin{DoxyCompactList}\small\item\em \-Get program location. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classdwf__utils_1_1dir_parser_a3f9812dae1d05c192d286acedbffeeb4}{get\-W\-Dir} () const 
+\begin{DoxyCompactList}\small\item\em \-Get working directory. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classdwf__utils_1_1dir_parser_a12e65b65ea478894db62237ca234dfca}{get\-Max\-Path\-Length} () const 
+\begin{DoxyCompactList}\small\item\em \-Get maximal length of path names. \end{DoxyCompactList}\item 
+void \hyperlink{classdwf__utils_1_1dir_parser_af5fe8320cc384ea9f53d954d1eb0f293}{set\-Max\-Path\-Length} (unsigned int max\-Path\-Length=\-P\-A\-T\-H\-\_\-\-M\-A\-X)
+\begin{DoxyCompactList}\small\item\em \-Set maximal length of path names. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classdwf__utils_1_1dir_parser_abb7d71b7a71833007b51cf3131619ec5}{update} ()
+\begin{DoxyCompactList}\small\item\em \-Function used to update the working directory and program location. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classdwf__utils_1_1dir_parser_aaa509c8f4bea9809212bcd3ffc656a86}{set\-Dir} ()
+\begin{DoxyCompactList}\small\item\em \-Function used to set the working directory and program location. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{classdwf__utils_1_1dir_parser_a3143c04d12fbb30e1d23e599eaae4a26}{m\-\_\-exe\-Loc}
+\item 
+std\-::string \hyperlink{classdwf__utils_1_1dir_parser_a82f8c1645951c9618306e182145564d8}{m\-\_\-\-W\-Dir}
+\item 
+bool \hyperlink{classdwf__utils_1_1dir_parser_ae401a84a2c08933ab79b1238ead0d50e}{m\-\_\-dir\-Loaded}
+\item 
+unsigned int \hyperlink{classdwf__utils_1_1dir_parser_a943ff3e8c7a9bc09c9a92c4c4fe983c7}{m\-\_\-max\-Path\-Length}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class for working directory and program location parsing. 
+
+\-Class used to parse working directory and program location. \-Can be inherited according to application needs to define applicative folders. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classdwf__utils_1_1dir_parser_a87df43abb0b6c09f2222d7106b22b2fb}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!dir\-Parser@{dir\-Parser}}
+\index{dir\-Parser@{dir\-Parser}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{dir\-Parser}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dwf\-\_\-utils\-::dir\-Parser\-::dir\-Parser} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{max\-Path\-Length = {\ttfamily \-P\-A\-T\-H\-\_\-\-M\-A\-X}}
+\end{DoxyParamCaption}
+)}}\label{classdwf__utils_1_1dir_parser_a87df43abb0b6c09f2222d7106b22b2fb}
+
+
+\-Constructor of the \hyperlink{classdwf__utils_1_1dir_parser}{dir\-Parser} class. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em max\-Path\-Length} & \-: maximal size of the paths. \-Default is system maximal size \-P\-A\-T\-H\-\_\-\-M\-A\-X.\\
+\hline
+\end{DoxyParams}
+\-Constructor of the \hyperlink{classdwf__utils_1_1dir_parser}{dir\-Parser} class allowing to initialize the working directory and program location. \hypertarget{classdwf__utils_1_1dir_parser_a3728fb70aee4a7403dc716e0c275fe05}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!$\sim$dir\-Parser@{$\sim$dir\-Parser}}
+\index{$\sim$dir\-Parser@{$\sim$dir\-Parser}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{$\sim$dir\-Parser}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dwf\-\_\-utils\-::dir\-Parser\-::$\sim$dir\-Parser} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classdwf__utils_1_1dir_parser_a3728fb70aee4a7403dc716e0c275fe05}
+
+
+\-Destructor of the \hyperlink{classdwf__utils_1_1dir_parser}{dir\-Parser} class. 
+
+\-Destructor of the \hyperlink{classdwf__utils_1_1dir_parser}{dir\-Parser} class. \-Currently does nothing. \-Virtual function. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classdwf__utils_1_1dir_parser_ad21b0a168bb9a0113f3a981f59f23b30}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!get\-Dir\-Loaded@{get\-Dir\-Loaded}}
+\index{get\-Dir\-Loaded@{get\-Dir\-Loaded}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{get\-Dir\-Loaded}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dwf\-\_\-utils\-::dir\-Parser\-::get\-Dir\-Loaded} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classdwf__utils_1_1dir_parser_ad21b0a168bb9a0113f3a981f59f23b30}
+
+
+\-Know if directories could be loaded. 
+
+\begin{DoxyReturn}{\-Returns}
+\-T\-R\-U\-E if directories could be loaded and \-F\-A\-L\-S\-E otherwise
+\end{DoxyReturn}
+\-Know if directories loading process went fine. \-Constant function. \hypertarget{classdwf__utils_1_1dir_parser_a1d20d40355682eb3efe0148a4d370777}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!get\-Exe\-Loc@{get\-Exe\-Loc}}
+\index{get\-Exe\-Loc@{get\-Exe\-Loc}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{get\-Exe\-Loc}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf dwf\-\_\-utils\-::dir\-Parser\-::get\-Exe\-Loc} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classdwf__utils_1_1dir_parser_a1d20d40355682eb3efe0148a4d370777}
+
+
+\-Get program location. 
+
+\begin{DoxyReturn}{\-Returns}
+\-Program location as a string terminated by the / or $\backslash$ character or an empty string if could not be loaded.
+\end{DoxyReturn}
+\-Get program locationr (i.\-e. directory in which the executable is located). \-Constant function. \hypertarget{classdwf__utils_1_1dir_parser_a12e65b65ea478894db62237ca234dfca}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!get\-Max\-Path\-Length@{get\-Max\-Path\-Length}}
+\index{get\-Max\-Path\-Length@{get\-Max\-Path\-Length}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{get\-Max\-Path\-Length}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf dwf\-\_\-utils\-::dir\-Parser\-::get\-Max\-Path\-Length} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classdwf__utils_1_1dir_parser_a12e65b65ea478894db62237ca234dfca}
+
+
+\-Get maximal length of path names. 
+
+\begin{DoxyReturn}{\-Returns}
+\-Maximal length of path names as an unsigned int
+\end{DoxyReturn}
+\-Get maximal length of path names. \-Constant function. \hypertarget{classdwf__utils_1_1dir_parser_a3f9812dae1d05c192d286acedbffeeb4}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!get\-W\-Dir@{get\-W\-Dir}}
+\index{get\-W\-Dir@{get\-W\-Dir}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{get\-W\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf dwf\-\_\-utils\-::dir\-Parser\-::get\-W\-Dir} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classdwf__utils_1_1dir_parser_a3f9812dae1d05c192d286acedbffeeb4}
+
+
+\-Get working directory. 
+
+\begin{DoxyReturn}{\-Returns}
+\-Working directory as a string terminated by the / or $\backslash$ character or an empty string if could not be loaded.
+\end{DoxyReturn}
+\-Get working directory (i.\-e. directory from which the executable is run). \-Constant function. \hypertarget{classdwf__utils_1_1dir_parser_aaa509c8f4bea9809212bcd3ffc656a86}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!set\-Dir@{set\-Dir}}
+\index{set\-Dir@{set\-Dir}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{set\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf dwf\-\_\-utils\-::dir\-Parser\-::set\-Dir} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1dir_parser_aaa509c8f4bea9809212bcd3ffc656a86}
+
+
+\-Function used to set the working directory and program location. 
+
+\-Function allowing to set the working directory and program location. \-Done during initialization but may be done especially if initial run failed. \-Protected function. \-May be called again through update function. \hypertarget{classdwf__utils_1_1dir_parser_af5fe8320cc384ea9f53d954d1eb0f293}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!set\-Max\-Path\-Length@{set\-Max\-Path\-Length}}
+\index{set\-Max\-Path\-Length@{set\-Max\-Path\-Length}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{set\-Max\-Path\-Length}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf dwf\-\_\-utils\-::dir\-Parser\-::set\-Max\-Path\-Length} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{max\-Path\-Length = {\ttfamily \-P\-A\-T\-H\-\_\-\-M\-A\-X}}
+\end{DoxyParamCaption}
+)}}\label{classdwf__utils_1_1dir_parser_af5fe8320cc384ea9f53d954d1eb0f293}
+
+
+\-Set maximal length of path names. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em max\-Path\-Length} & \-: maximal size of the paths. \-Default is system maximal size \-P\-A\-T\-H\-\_\-\-M\-A\-X.\\
+\hline
+\end{DoxyParams}
+\-Set maximal length of path names. \hypertarget{classdwf__utils_1_1dir_parser_abb7d71b7a71833007b51cf3131619ec5}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!update@{update}}
+\index{update@{update}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dwf\-\_\-utils\-::dir\-Parser\-::update} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classdwf__utils_1_1dir_parser_abb7d71b7a71833007b51cf3131619ec5}
+
+
+\-Function used to update the working directory and program location. 
+
+\begin{DoxyReturn}{\-Returns}
+\-T\-R\-U\-E if values could be updated, false otherwise
+\end{DoxyReturn}
+\-Function allowing to update the working directory and program location during execution. \-Its output can also be obtained through a get\-Dir\-Loaded call. \-Virtual function. 
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classdwf__utils_1_1dir_parser_ae401a84a2c08933ab79b1238ead0d50e}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!m\-\_\-dir\-Loaded@{m\-\_\-dir\-Loaded}}
+\index{m\-\_\-dir\-Loaded@{m\-\_\-dir\-Loaded}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{m\-\_\-dir\-Loaded}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dwf\-\_\-utils\-::dir\-Parser\-::m\-\_\-dir\-Loaded}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1dir_parser_ae401a84a2c08933ab79b1238ead0d50e}
+\-Were directories loaded ? \hypertarget{classdwf__utils_1_1dir_parser_a3143c04d12fbb30e1d23e599eaae4a26}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!m\-\_\-exe\-Loc@{m\-\_\-exe\-Loc}}
+\index{m\-\_\-exe\-Loc@{m\-\_\-exe\-Loc}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{m\-\_\-exe\-Loc}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf dwf\-\_\-utils\-::dir\-Parser\-::m\-\_\-exe\-Loc}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1dir_parser_a3143c04d12fbb30e1d23e599eaae4a26}
+\-Program \-Location folder as a string \hypertarget{classdwf__utils_1_1dir_parser_a943ff3e8c7a9bc09c9a92c4c4fe983c7}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!m\-\_\-max\-Path\-Length@{m\-\_\-max\-Path\-Length}}
+\index{m\-\_\-max\-Path\-Length@{m\-\_\-max\-Path\-Length}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{m\-\_\-max\-Path\-Length}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf dwf\-\_\-utils\-::dir\-Parser\-::m\-\_\-max\-Path\-Length}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1dir_parser_a943ff3e8c7a9bc09c9a92c4c4fe983c7}
+\-Max size of path names \hypertarget{classdwf__utils_1_1dir_parser_a82f8c1645951c9618306e182145564d8}{\index{dwf\-\_\-utils\-::dir\-Parser@{dwf\-\_\-utils\-::dir\-Parser}!m\-\_\-\-W\-Dir@{m\-\_\-\-W\-Dir}}
+\index{m\-\_\-\-W\-Dir@{m\-\_\-\-W\-Dir}!dwf_utils::dirParser@{dwf\-\_\-utils\-::dir\-Parser}}
+\subsubsection[{m\-\_\-\-W\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf dwf\-\_\-utils\-::dir\-Parser\-::m\-\_\-\-W\-Dir}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1dir_parser_a82f8c1645951c9618306e182145564d8}
+\-Working \-Directory as a string 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{dir_parser_8h}{dir\-Parser.\-h}\item 
+src/\hyperlink{dir_parser_8cpp}{dir\-Parser.\-cpp}\end{DoxyCompactItemize}

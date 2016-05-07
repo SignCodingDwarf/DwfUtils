@@ -1,0 +1,411 @@
+#include "DwfSock.h"
+
+using namespace std;
+
+/*************************** Public ************************************/
+
+DwfSock::DwfSock(std::string ip_add, int port_num, int header_size, int backlog, string start_msg, string end_msg) : m_header_size(header_size), m_start_msg(start_msg), m_end_msg(end_msg), m_backlog(backlog)
+{
+	m_s = INVALID_SOCKET; // Before initialization, the socket is invalid
+
+	cout << "********* TCP/IP Communication Application Beginning *********" << endl;
+	if(init() == EXEC_SUCCESS)
+	{
+		// Setup Winsock communication code here
+		IPv4Setup(ip_add, port_num);
+		if(InitIPv4Socket() == EXEC_SUCCESS)
+		{
+			if(PrepareIPv4ServerSocket(BACKLOG_SIZE) == EXEC_SUCCESS) 
+			{
+				cout << "\n\n********* Communication Phase *********" << endl;
+				IPv4Status();
+				m_initOK = true;
+			}
+			else
+			{
+				m_initOK = false;
+			}
+		}
+		else
+		{
+			m_initOK = false;
+		}
+	}
+	else
+	{
+		m_initOK = false;
+	}
+}
+
+bool DwfSock::isInitOK() const
+{
+	return m_initOK;
+}
+
+void DwfSock::setSocket(SOCKET s)
+{
+	m_s = s;
+}
+
+SOCKET DwfSock::getSocket() const
+{
+	return m_s;
+}
+
+std::string DwfSock::get_start_msg() const
+{
+	return m_start_msg;
+}
+
+std::string DwfSock::get_end_msg() const
+{
+	return m_end_msg;
+}
+
+DwfSock::~DwfSock(void)
+{
+	CloseIPv4Socket();
+
+	cleanup();
+
+	cout << "\n\n********* TCP/IP Communication Application End *********" << endl;
+}
+
+int DwfSock::IPv4SendMessage(string message)
+{
+	// Add header
+	std::string msg;
+	msg = header(message.size()) + message;
+
+	// Message is sent
+	if(send(m_s, msg.c_str(), msg.size(), 0) == SOCKET_ERROR)
+	{
+		cout << "Cannot send message on the socket" << endl;
+		return EXEC_FAILURE;
+	}
+	else
+	{
+		return EXEC_SUCCESS;
+	}
+}
+
+string DwfSock::IPv4ReceiveMessage()
+{
+	char *header = new char[m_header_size+1];
+	if( recv(m_s, header, m_header_size, 0) == SOCKET_ERROR)
+	{
+#if __linux__
+		int lastError = errno; //errno contains the last error code (safer to store it before rendering see errno(3) in linux documentation)
+#endif
+
+		cout << "Cannot receive header on the socket because of error : ";		
+#ifdef _WIN32
+		cout << WSAGetLastError() << endl;
+#elif __linux__
+		cout << lastError << endl; 
+#endif
+		delete header;
+		return "";
+	}
+	else
+	{
+		header[m_header_size] = '\0';
+		int message_size = stringToInt(header);
+		char *message = new char[message_size+1];
+
+		if(recv(m_s, message, message_size, 0) == SOCKET_ERROR)
+		{
+#if __linux__
+			int lastError = errno; //errno contains the last error code (safer to store it before rendering see errno(3) in linux documentation)
+#endif
+
+			cout << "Cannot receive message on the socket because of error : ";		
+#ifdef _WIN32
+			cout << WSAGetLastError() << endl;
+#elif __linux__
+			cout << lastError << endl; 
+#endif
+			delete header;
+			delete message;
+			return "";
+		}
+		else
+		{
+			message[message_size] = '\0';
+			std::string msg(message);
+			delete message;
+			delete header;
+			return msg;
+		}
+	}
+}
+
+
+int DwfSock::WaitForIPv4ClientConnection()
+{
+	if(m_initOK)
+	{
+		SOCKET NewConnection = INVALID_SOCKET;
+		cout << "Server: accept() is ready..." << std::endl;
+		// Accept a new connection when one arrives.
+		while(1)
+		{
+			while(NewConnection == SOCKET_ERROR)
+			{
+				NewConnection = accept(m_s, NULL, NULL);
+			}
+			cout << "Server: accept() is OK..." << std::endl;
+			cout << "Server: Client connected, ready for receiving and sending data..." << std::endl;
+			// Transfer the connected socket to the listening socket
+			m_s = NewConnection;
+			break;
+		}
+		return EXEC_SUCCESS;
+	}
+	else
+	{
+		return EXEC_FAILURE;
+	}
+}
+
+/*************************** Private ************************************/
+std::string DwfSock::header(int message_length) 
+{
+	std::string header;
+	std::string m_lgt = intToString(message_length);
+
+	int d = m_header_size - m_lgt.size();
+
+	if(d > 0)
+	{
+		for(int i = 0; i < d; ++i)
+		{
+			header += " "; // Padding with spaces (to conform Matlab notation)
+		}
+	}
+	header += m_lgt;
+
+	return header;
+}
+
+
+int DwfSock::init()
+{
+#ifdef _WIN32 //Initialization of Winsock and get its status
+	WSADATA wsaData;
+	int RetCode;
+
+	cout << "\n\n********* Initialization of Winsock 2.2 *********" << endl;
+
+
+	// Initialize Winsock version 2.2
+	if ((RetCode = WSAStartup(MAKEWORD(2,2), &wsaData)) != 0)
+	{
+		cout << "WSAStartup failed with error " << RetCode << endl;
+		return EXEC_FAILURE;
+	}
+	else
+	{
+		cout << "The Winsock dll found!" << endl;
+		cout << "The current status is: " << wsaData.szSystemStatus << "." << endl;
+
+		if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2 )
+		{
+			//Tell the user that we could not find a usable WinSock DLL
+			cout << "The dll do not support the Winsock version " << (int) LOBYTE(wsaData.wVersion) << "." << (int) HIBYTE(wsaData.wVersion) << "!" << endl;
+			return EXEC_FAILURE;
+		}
+		else
+		{
+			cout << "The dll supports the Winsock version " << (int) LOBYTE(wsaData.wVersion) << "." << (int) HIBYTE(wsaData.wVersion) << "!" << endl;
+			cout << "The highest version this dll can support: " << (int) LOBYTE(wsaData.wHighVersion) << "." << (int) HIBYTE(wsaData.wHighVersion) << endl;
+			return EXEC_SUCCESS;
+		}
+	}
+#elif __linux__
+	return EXEC_SUCCESS; // Nothing to do on initialization on linux for the moment
+#endif
+}
+
+int DwfSock::cleanup() 
+{
+#ifdef _WIN32 // Properly clean up WinSocket application
+	cout << "\n\n********* Winsocket Cleanup phase *********" << endl;
+	if (WSACleanup() == SOCKET_ERROR)
+	{
+		cout << "WSACleanup failed with error " << WSAGetLastError() << endl;
+		return EXEC_FAILURE;
+	}
+	else
+	{
+		cout << "WSA successfully cleaned up" << endl;
+		return EXEC_SUCCESS;
+	}
+#elif __linux__
+	return EXEC_SUCCESS; // Nothing to do for cleanup on linux for the moment
+#endif
+}
+
+int DwfSock::IPv4Setup(string ip_add, int port_num)
+{
+	cout << "\n\n********* IPv4 address and port set up *********" << endl;
+	cout << "Will try to connect to address " << ip_add << " on port " << port_num << endl;
+	
+	m_addr.sin_family = AF_INET; //IP address family
+	m_addr.sin_port = htons(port_num);
+	m_addr.sin_addr.s_addr = inet_addr(ip_add.c_str());
+
+	return EXEC_SUCCESS;
+}
+
+int DwfSock::InitIPv4Socket()
+{
+	SOCKET temp;
+
+	cout << "\n\n********* IPv4 socket set up *********" << endl;
+	temp = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+     // Check for errors to ensure that the socket is a valid socket.
+     	if (temp == INVALID_SOCKET)
+	{
+#if __linux__
+		int lastError = errno; //errno contains the last error code (safer to store it before rendering see errno(3) in linux documentation)
+#endif
+
+		cout << "Error at socket(), error code: ";
+#ifdef _WIN32
+		cout << WSAGetLastError() << endl;
+#elif __linux__
+		cout << lastError << endl; 
+#endif
+
+         	// and exit with error
+         	return EXEC_FAILURE;
+     	}
+     	else
+	{
+		cout << "socket() is OK!" << endl;
+		m_s = temp;
+		return EXEC_SUCCESS;
+	}
+}
+
+int DwfSock::IPv4Status()
+{
+	if(m_addr.sin_family != AF_INET)
+	{
+		cout << "This is not an IPv4 address" << endl;
+		return EXEC_FAILURE;
+	}
+	else
+	{
+		cout << "Connected to address " << inet_ntoa(m_addr.sin_addr) << ", port " << ntohs(m_addr.sin_port) << endl;
+		return EXEC_SUCCESS;
+	}
+}
+
+int DwfSock::CloseIPv4Socket()
+{
+	cout << "\n\n********* End of the Communication Phase *********" << endl;
+	// When you are finished sending and receiving data on the
+	// NewConnection socket and are finished accepting new connections
+	// on ListeningSocket, you should close the sockets using the closesocket API on Windows or close API on Linux
+#ifdef _WIN32
+	if(closesocket(m_s) == SOCKET_ERROR)
+	{
+		cout << "Server: Cannot close \"Listening\" socket. Error code: " << WSAGetLastError() << endl;
+		return EXEC_FAILURE;
+	}
+	else
+	{
+		cout << "Server: Closing \"Listening\" socket..." << std::endl;
+		return EXEC_SUCCESS;
+	}
+#elif __linux__
+	// Wait for reception of messages is empty (i.e. client has disconnected)
+	ssize_t x;
+	do
+	{
+		char c;
+		x = recv(m_s, &c, 1, 0);
+		
+	}while(x != 0); 
+
+
+	if(close(m_s) == SOCKET_ERROR)
+	{
+		int lastError = errno;
+		cout << "Server: Cannot close \"Listening\" socket. Error code: " << lastError << endl;
+		return EXEC_FAILURE;
+	}
+	else
+	{
+		cout << "Server: Closing \"Listening\" socket..." << std::endl;
+		return EXEC_SUCCESS;
+	}
+#endif
+}
+
+int DwfSock::PrepareIPv4ServerSocket()
+{
+	cout << "\n\n********* Socket configuration in server mode *********" << endl;
+
+	// Associate the address information with the socket using bind.
+    	// Call the bind function, passing the created socket and the sockaddr_in
+    	// structure as parameters. Check for general errors.
+	if (bind(m_s, (SOCKADDR *)&m_addr, sizeof(m_addr)) == SOCKET_ERROR)
+	{
+#if __linux__
+		int lastError = errno; //errno contains the last error code (safer to store it before rendering see errno(3) in linux documentation)
+#endif
+
+		cout << "Server: bind() failed! Error code: ";
+#ifdef _WIN32
+		cout << WSAGetLastError() << endl;
+#elif __linux__
+		cout << lastError << endl; 
+#endif
+
+		// Close the socket
+#ifdef _WIN32
+		closesocket(m_s);
+#elif __linux__
+		close(m_s);
+#endif
+		// and exit with error
+		return EXEC_FAILURE;
+	}
+	else
+	{
+		cout << "Server: bind() is OK!" << endl;
+	}
+
+	// Listen for client connections. 
+	if (listen(m_s, m_backlog) == SOCKET_ERROR)
+	{
+#if __linux__
+		int lastError = errno; //errno contains the last error code (safer to store it before rendering see errno(3) in linux documentation)
+#endif
+
+		cout << "Server: listen() failed! Error code: ";
+#ifdef _WIN32
+		cout << WSAGetLastError() << endl;
+#elif __linux__
+		cout << lastError << endl; 
+#endif
+
+		// Close the socket
+#ifdef _WIN32
+		closesocket(m_s);
+#elif __linux__
+		close(m_s);
+#endif
+		// and exit with error
+		return EXEC_FAILURE;
+	}
+	else
+	{
+		cout << "Server: listen() is OK, I'm waiting for connections..." << endl;
+		return EXEC_SUCCESS;
+	}
+}

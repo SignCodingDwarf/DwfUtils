@@ -1,0 +1,60 @@
+/*!
+ * @file foldParser.h
+ * @brief Class used to parse working directory and program location.
+ * @author Sign Coding Dwarf
+ * @version 1.0
+ * @date 24 April 2016
+ *
+ * Implementation of the class used to parse working directory and programm location.
+ * Can be inherited according to application needs to add other folders.
+ * Based on http://stackoverflow.com/questions/143174/how-do-i-get-the-directory-that-a-program-is-running-from
+ *
+ */
+
+#include "foldParser.h"
+
+using namespace std;
+
+namespace dwf_utils
+{
+	foldParser::foldParser()
+	{
+		setDir();
+	}
+
+	foldParser::~foldParser(void)
+	{
+	}
+
+	bool foldParser::getFoldLoaded() const
+	{
+		return m_foldLoaded;
+	}
+
+	string foldParser::getMainFold() const
+	{
+		return m_mainFold;
+	}
+
+	void foldParser::setMainDir(int argc, char* argv[])
+	{	
+		m_mainFold = argv[0]; // Application folder is first call argument
+		// Find last character
+		size_t last = m_mainFold.find_last_of('\\');
+		if(last == m_mainFold.npos)
+		{
+			last = m_mainFold.find_last_of('/');
+		}
+
+		if(last != m_mainFold.npos)
+		{
+			m_mainFold.erase(last+1); // Remove program name to get folder
+			m_foldLoaded = true;	
+		}
+		else
+		{
+			m_foldLoaded = false;
+			m_mainFold = "";
+		}
+	}
+}

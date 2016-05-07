@@ -1,0 +1,94 @@
+/*!
+ * @file DwfSock.h
+ * @brief TCP/IP Communication class to exchange messages as strings
+ * @author Sign Coding Dwarf
+ * @version 1.0
+ * @date 17 April 2016
+ *
+ * Definition of the class used to communicate using TCP/IP protocol. Works both on Linux and Windows
+ * Based on examples from : http://www.winsocketdotnetworkprogramming.com/winsock2programming/winsock2advancedcode1.html
+ * Can optionnally contain start and end messages given for communication
+ *
+ */
+
+#ifndef DWF_SOCK
+#define DWF_SOCK
+
+#ifdef _WIN32
+
+#include <winsock2.h> // winsock contains everything we need on Windows
+
+#elif __linux__
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h> 
+#include <unistd.h>
+#include <errno.h>
+
+#endif
+
+#include <iostream>
+#include <string>
+#include "convUtils.h"
+#include "common_defines.h"
+
+#define BACKLOG_SIZE_DEFAULT 5 // Default backlog value on Windows desktops
+
+#ifdef __linux__
+	typedef struct sockaddr_in SOCKADDR_IN; // To remain compatible with WIN32 name of the struct
+	typedef struct sockaddr SOCKADDR; // To remain compatible with WIN32 name of the struct
+	typedef int SOCKET; //SOCKET structure is not defined in Linux but we can use an int instead
+	#define INVALID_SOCKET -1 //Definition of an invalid socket for compatibility
+	#define SOCKET_ERROR -1 // socket functions on Linux return -1 on error so we define SOCKET_ERROR as -1 for compatibility with Windows apps
+#endif
+
+namespace dwf_comm
+{
+	class DwfSock
+	{
+	public:
+		DwfSock(std::string ip_add, int port_num, int header_size, int backlog = 5, std::string start_msg="", std::string end_msg="");
+
+		bool isInitOK() const;
+		void setSocket(SOCKET s);
+		SOCKET getSocket() const;
+		std::string get_start_msg() const; // Messages to handle the communication
+		std::string get_end_msg() const;
+		~DwfSock(void);
+
+		/*************************** IPv4 ************************************/ 
+		////// Common
+		int IPv4SendMessage(std::string message); // Sends message and computes the appropriate header
+		std::string IPv4ReceiveMessage(); // Recovers a sent message with the appropriate header
+		////// Server
+		int WaitForIPv4ClientConnection(); //Waits for the connection of a IPv4 Client
+
+
+	private:
+		bool m_initOK;
+		SOCKADDR_IN m_addr;
+		SOCKET m_s;
+		std::string m_start_msg; //Messages used to indicate application start and end
+		std::string m_end_msg;
+		int m_backlog;
+
+		int m_header_size; //size of the messages communication header
+		std::string header(int message_length); // Creates the header for matlab communication
+
+		/************************* Common ************************************/
+		int init(); //Init and check up for Winsocketv2.2 (nothing to do on linux)
+		int cleanup(); //Clean up WS config at the end of the program (nothing to do on linux)
+		/*************************** IPv4 ************************************/ 
+		////// Common
+		int IPv4Setup(std::string ip_add, int port_num); //Set up the communication for IPv4 with ip_add as destination address and port_num as port number
+		int InitIPv4Socket(); //Initialise a socket that will be bound to a IPv4 address
+		int IPv4Status(); //Prints the IPv4 address and port of addr
+		int CloseIPv4Socket(); //Closes the IPv4 socket
+		////// Server
+		int PrepareIPv4ServerSocket(); //Prepare a socket as a server to listen for connection requests, can queue backlog requests (i.e. backlog = number of maximal connection attempts to a server before rejecting connection attempts if they are not treated)
+	};
+}
+#endif

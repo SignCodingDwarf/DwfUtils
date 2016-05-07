@@ -1,0 +1,46 @@
+#include <iostream>
+
+#include "common_defines.h"
+#include "convUtils.h"
+
+class Toto
+{
+public:
+	Toto(int i) : m_i(i)
+	{
+	}
+
+protected:
+	int m_i;
+};
+
+int main()
+{
+	std::cout << "Test de conversion" << std::endl;
+
+	double c = 2.15;
+
+	std::string s("Chaine Convertie");
+	s += utils::toString<double>(c);
+
+	std::cout << s << std::endl;
+
+	s = "Chaine Convertie ";
+	bool f = true;
+	s += utils::toString<bool>(f);
+
+	std::cout << s << std::endl;
+
+	s = utils::toString<double>(c);
+	f = utils::fromString<bool>(s);
+	std::cout << f << std::endl;
+
+	s = "Chaine Convertie ";	
+	Toto o(4);
+//	s += utils::toString<Toto>(o);
+
+	s = utils::toString<double>(c);
+	o = utils::fromString<Toto>(s);
+
+	return EXIT_SUCCESS;
+}

@@ -1,0 +1,166 @@
+/*!
+ * @file dirParser.cpp
+ * @brief Class used to parse working directory and program location.
+ * @author Sign Coding Dwarf
+ * @version 1.0
+ * @date 06 May 2016
+ *
+ * Implementation of the class used to parse working directory and programm location. Adapted to work both on Windows and Linux.
+ * Can be inherited according to application needs to add other folders.
+ * Based on http://stackoverflow.com/questions/143174/how-do-i-get-the-directory-that-a-program-is-running-from
+ *
+ */
+
+/* 
+Copyright 2016 SignCodingDwarf
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+#include "dirParser.h"
+
+using namespace std;
+
+namespace dwf_utils
+{
+	dirParser::dirParser(unsigned int maxPathLength) : m_dirLoaded(true), m_WDir(), m_exeLoc(), m_maxPathLength(maxPathLength)
+	{
+		setDir();
+#if DEBUG
+		cout << PATH_MAX << endl;
+#endif
+	}
+
+	dirParser::~dirParser(void)
+	{
+	}
+
+	bool dirParser::getDirLoaded() const
+	{
+		return m_dirLoaded;
+	}
+
+	string dirParser::getExeLoc() const
+	{
+		return m_exeLoc;
+	}
+
+	string dirParser::getWDir() const
+	{
+		return m_WDir;
+	}
+
+	unsigned int dirParser::getMaxPathLength() const
+	{
+		return m_maxPathLength;
+	}
+
+	void dirParser::setMaxPathLength(unsigned int maxPathLength)
+	{
+		m_maxPathLength = maxPathLength;
+	}
+
+	bool dirParser::update()
+	{
+		m_dirLoaded = true; // Reset found variable since setDir can only set to false
+		setDir(); // Call set function to update
+		return m_dirLoaded;
+	}
+
+	void dirParser::setDir()
+	{	
+		// Get current Woring Directory
+ 		char WD[m_maxPathLength]; // PATH_MAX is maximal size of a path length
+#ifdef _WIN32
+		char *dir = _getcwd(WD, sizeof(WD)); // Get the output of this function to check success
+#elif __linux__
+		char *dir = getcwd(WD, sizeof(WD)); // Get the output of this function to check success
+#endif
+		if(dir != NULL)
+		{
+			m_WDir = WD;
+#ifdef _WIN32   // Add folder separating characer depending on the OS
+			m_WDir += '\\' 
+#elif __linux__
+			m_WDir += '/';
+#endif
+		}
+		else
+		{
+#if DEBUG
+			std::cerr << "Could not find working directory" << std::endl;
+#endif
+			m_dirLoaded = false;
+		}
+
+		// Get executable location
+  		char exeLoc[ m_maxPathLength ];
+#ifdef _WIN32
+		ssize_t size = GetModuleFileName( NULL, exeLoc, m_maxPathLength ); 
+#elif __linux__
+		ssize_t size = readlink( "/proc/self/exe", exeLoc, m_maxPathLength );
+#endif
+		if(size > 0)
+		{
+	 		m_exeLoc = exeLoc;
+			size_t last = m_exeLoc.find_last_of('\\');
+			if(last == m_exeLoc.npos)
+			{
+				last = m_exeLoc.find_last_of('/');
+			}
+
+			if(last != m_exeLoc.npos)
+			{
+				m_exeLoc.erase(last+1); // Remove excutable name to get directory
+			}
+			else
+			{
+#if DEBUG
+				std::cerr << "Could not find / or \\ character in file name" << std::endl;
+#endif
+				m_dirLoaded = false;
+			}
+		}
+		else
+		{
+#if DEBUG
+			std::cerr << "Could not locate executable" << std::endl;
+#endif
+			m_dirLoaded = false;
+		}
+	}
+}
+
+//  ______________________________
+// |                              |
+// |    ______________________    |       
+// |   |                      |   |
+// |   |         sign         |   |
+// |   |        coding        |   |
+// |   |        dw@rf         |   |
+// |   |         1.0          |   |
+// |   |______________________|   |
+// |                              |
+// |______________________________|
+//               |  |           
+//               |  |             
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |__|
