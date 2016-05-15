@@ -29,7 +29,7 @@ limitations under the License.
 * @def DWFUTILS_VERSION_MAJOR
 * @brief Major version number
 */
-#define DWFUTILS_VERSION_MAJOR 1
+#define DWFUTILS_VERSION_MAJOR 2
 
 /*! 
 * @def DWFUTILS_VERSION_MINOR
