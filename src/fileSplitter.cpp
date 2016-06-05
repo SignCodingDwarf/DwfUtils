@@ -32,6 +32,7 @@ namespace dwf_utils
 {
 	fileSplitter::fileSplitter(std::string baseName, std::string extension, unsigned long fileSize) : m_baseName(baseName), m_fileSize(fileSize), m_fileNb(0), m_status(true), m_written(0), m_extension(extension)
 	{
+		addDot();
 		std::string fileName = m_baseName + "_0" + m_extension;
 		m_file.open(fileName);
 		if(!m_file)
@@ -70,6 +71,14 @@ namespace dwf_utils
 	bool fileSplitter::getStatus() const
 	{
 		return m_status;
+	}
+
+	void fileSplitter::addDot()
+	{
+		if(m_extension[0] != '.') // Extension should start by a dot
+		{
+			m_extension.insert(m_extension.begin(), '.'); // Insert dot at the beginning of string
+		}
 	}
 }
 

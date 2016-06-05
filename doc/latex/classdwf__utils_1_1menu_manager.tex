@@ -1,0 +1,150 @@
+\hypertarget{classdwf__utils_1_1menu_manager}{\section{dwf\-\_\-utils\-:\-:menu\-Manager \-Class \-Reference}
+\label{classdwf__utils_1_1menu_manager}\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}}
+}
+
+
+\-Class allowing to manage your application menu.  
+
+
+
+
+{\ttfamily \#include $<$include/menu\-Manager.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classdwf__utils_1_1menu_manager_aec39eb4ae7e3400295b2701da3de737c}{menu\-Manager} (std\-::string menu\-Start=\char`\"{}\-The \-Dwarves shall kill you $\backslash$n\-For you didn$\backslash$'t find a better menu introduction\char`\"{}, std\-::string quit\-Id=\char`\"{}q\char`\"{})
+\begin{DoxyCompactList}\small\item\em \-Constructor of the \hyperlink{classdwf__utils_1_1menu_manager}{menu\-Manager} class. \end{DoxyCompactList}\item 
+virtual \hyperlink{classdwf__utils_1_1menu_manager_ad1bee0343e5c351933ad8905a92dd677}{$\sim$menu\-Manager} ()
+\begin{DoxyCompactList}\small\item\em \-Destructor of the \hyperlink{classdwf__utils_1_1menu_manager}{menu\-Manager} class. \end{DoxyCompactList}\item 
+int \hyperlink{classdwf__utils_1_1menu_manager_ac49bb4083beb16254afc00db078674db}{add\-Action} (std\-::string action\-Id, void($\ast$callback)(void), std\-::string description)
+\begin{DoxyCompactList}\small\item\em \-Add menu action. \end{DoxyCompactList}\item 
+void \hyperlink{classdwf__utils_1_1menu_manager_a0c22a7e10e567a450ad26c3dac2abbd3}{enter\-Menu} ()
+\begin{DoxyCompactList}\small\item\em \-Run menu loop and wait user input for actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classdwf__utils_1_1menu_manager_adb12e6d8f7844089b4e1fd130f06df0b}{quit} ()
+\begin{DoxyCompactList}\small\item\em \-Quit action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{classdwf__utils_1_1menu_manager_ad5bf586a25449c2fb4ebba6dd36b9d43}{m\-\_\-menu\-Start}
+\item 
+std\-::map$<$ std\-::string, \*
+std\-::pair$<$ void($\ast$)(void), \*
+std\-::string $>$ $>$ \hyperlink{classdwf__utils_1_1menu_manager_ae8707504317fb8fb0e970a3fe59e2b07}{m\-\_\-menu\-Actions}
+\item 
+bool \hyperlink{classdwf__utils_1_1menu_manager_a1ca50905e47677b7fa6fd523cc161961}{m\-\_\-quit}
+\item 
+std\-::string \hyperlink{classdwf__utils_1_1menu_manager_a5ca4d1705a71907d7148891314739f50}{m\-\_\-quit\-Id}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class allowing to manage your application menu. 
+
+\-Class used to manage a console menu to call more easily to test functions with void $\ast$func(void) signature. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classdwf__utils_1_1menu_manager_aec39eb4ae7e3400295b2701da3de737c}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!menu\-Manager@{menu\-Manager}}
+\index{menu\-Manager@{menu\-Manager}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{menu\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dwf\-\_\-utils\-::menu\-Manager\-::menu\-Manager} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{menu\-Start = {\ttfamily \char`\"{}\-The~\-Dwarves~shall~kill~you~$\backslash$n\-For~you~didn$\backslash$'t~find~a~better~menu~introduction\char`\"{}}, }
+\item[{std\-::string}]{quit\-Id = {\ttfamily \char`\"{}q\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classdwf__utils_1_1menu_manager_aec39eb4ae7e3400295b2701da3de737c}
+
+
+\-Constructor of the \hyperlink{classdwf__utils_1_1menu_manager}{menu\-Manager} class. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em menu\-Start} & \-: \-Welcome text of the menu. \-Default text proposes to kill you \\
+\hline
+{\em quit\-Id} & \-: \-Id of the quit action as a string. \-Default is q.\\
+\hline
+\end{DoxyParams}
+\-Constructor of the \hyperlink{classdwf__utils_1_1menu_manager}{menu\-Manager} class allowing to initialize our class. \hypertarget{classdwf__utils_1_1menu_manager_ad1bee0343e5c351933ad8905a92dd677}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!$\sim$menu\-Manager@{$\sim$menu\-Manager}}
+\index{$\sim$menu\-Manager@{$\sim$menu\-Manager}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{$\sim$menu\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dwf\-\_\-utils\-::menu\-Manager\-::$\sim$menu\-Manager} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classdwf__utils_1_1menu_manager_ad1bee0343e5c351933ad8905a92dd677}
+
+
+\-Destructor of the \hyperlink{classdwf__utils_1_1menu_manager}{menu\-Manager} class. 
+
+\-Destructor of the \hyperlink{classdwf__utils_1_1menu_manager}{menu\-Manager} class. \-Empties actions map. \-Virtual function. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classdwf__utils_1_1menu_manager_ac49bb4083beb16254afc00db078674db}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!add\-Action@{add\-Action}}
+\index{add\-Action@{add\-Action}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{add\-Action}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dwf\-\_\-utils\-::menu\-Manager\-::add\-Action} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{action\-Id, }
+\item[{void($\ast$)(void)}]{callback, }
+\item[{std\-::string}]{description}
+\end{DoxyParamCaption}
+)}}\label{classdwf__utils_1_1menu_manager_ac49bb4083beb16254afc00db078674db}
+
+
+\-Add menu action. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em action\-Id} & \-: \-Id of the action to perform as a string \\
+\hline
+{\em callback} & \-: \-Function pointer on the action to perform. \-The function must have no return and no parameters. \\
+\hline
+{\em description} & \-: \-Description of the action as a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-E\-X\-E\-C\-\_\-\-S\-U\-C\-C\-E\-S\-S if action could be added and \-E\-X\-E\-C\-\_\-\-F\-A\-I\-L\-U\-R\-E otherwise
+\end{DoxyReturn}
+\-Add an action with its \-Id and its description. \-The action is only added if its \-Id is not taken by another action. \hypertarget{classdwf__utils_1_1menu_manager_a0c22a7e10e567a450ad26c3dac2abbd3}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!enter\-Menu@{enter\-Menu}}
+\index{enter\-Menu@{enter\-Menu}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{enter\-Menu}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf dwf\-\_\-utils\-::menu\-Manager\-::enter\-Menu} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classdwf__utils_1_1menu_manager_a0c22a7e10e567a450ad26c3dac2abbd3}
+
+
+\-Run menu loop and wait user input for actions. 
+
+\-Displays the menu and enter the action loop. \-Stays in this function until the user asks for the quit action. \hypertarget{classdwf__utils_1_1menu_manager_adb12e6d8f7844089b4e1fd130f06df0b}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!quit@{quit}}
+\index{quit@{quit}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{quit}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf dwf\-\_\-utils\-::menu\-Manager\-::quit} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}\label{classdwf__utils_1_1menu_manager_adb12e6d8f7844089b4e1fd130f06df0b}
+
+
+\-Quit action. 
+
+\-Function called for the quit action. \-Also displays goodbye message. \-Virtual function. 
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classdwf__utils_1_1menu_manager_ae8707504317fb8fb0e970a3fe59e2b07}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!m\-\_\-menu\-Actions@{m\-\_\-menu\-Actions}}
+\index{m\-\_\-menu\-Actions@{m\-\_\-menu\-Actions}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{m\-\_\-menu\-Actions}]{\setlength{\rightskip}{0pt plus 5cm}std\-::map$<$std\-::string, std\-::pair$<$void ($\ast$)(void), std\-::string$>$ $>$ {\bf dwf\-\_\-utils\-::menu\-Manager\-::m\-\_\-menu\-Actions}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1menu_manager_ae8707504317fb8fb0e970a3fe59e2b07}
+\-Map of actions associated with their description and \-Id \hypertarget{classdwf__utils_1_1menu_manager_ad5bf586a25449c2fb4ebba6dd36b9d43}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!m\-\_\-menu\-Start@{m\-\_\-menu\-Start}}
+\index{m\-\_\-menu\-Start@{m\-\_\-menu\-Start}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{m\-\_\-menu\-Start}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf dwf\-\_\-utils\-::menu\-Manager\-::m\-\_\-menu\-Start}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1menu_manager_ad5bf586a25449c2fb4ebba6dd36b9d43}
+\-Welcome message of menu \hypertarget{classdwf__utils_1_1menu_manager_a1ca50905e47677b7fa6fd523cc161961}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!m\-\_\-quit@{m\-\_\-quit}}
+\index{m\-\_\-quit@{m\-\_\-quit}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{m\-\_\-quit}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dwf\-\_\-utils\-::menu\-Manager\-::m\-\_\-quit}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1menu_manager_a1ca50905e47677b7fa6fd523cc161961}
+\-Quit menu flag \hypertarget{classdwf__utils_1_1menu_manager_a5ca4d1705a71907d7148891314739f50}{\index{dwf\-\_\-utils\-::menu\-Manager@{dwf\-\_\-utils\-::menu\-Manager}!m\-\_\-quit\-Id@{m\-\_\-quit\-Id}}
+\index{m\-\_\-quit\-Id@{m\-\_\-quit\-Id}!dwf_utils::menuManager@{dwf\-\_\-utils\-::menu\-Manager}}
+\subsubsection[{m\-\_\-quit\-Id}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf dwf\-\_\-utils\-::menu\-Manager\-::m\-\_\-quit\-Id}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1menu_manager_a5ca4d1705a71907d7148891314739f50}
+\-Id of the quit action 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{menu_manager_8h}{menu\-Manager.\-h}\item 
+src/\hyperlink{menu_manager_8cpp}{menu\-Manager.\-cpp}\end{DoxyCompactItemize}

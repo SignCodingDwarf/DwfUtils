@@ -1,0 +1,95 @@
+/*!
+ * @file menuGenerator.h
+ * @brief Class used to manage storing of big data in several files
+ * @author Sign Coding Dwarf
+ * @version 1.0
+ * @date 16 May 2016
+ *
+ * Definition of the class used to store a big set of data in multiple subfiles to get smaller files and avoid too much data loss due to file corruption or program bugs.
+ * The amount of data to store is determined by the number of call to operator<<. User may also manually trigger a file change. <br>
+ * To test if it is available with your library version use <br>
+ * \a \#if \a DWFUTILS_VERSION_NUMERIC>=111552336
+ *
+ */
+
+/* 
+Copyright 2016 SignCodingDwarf
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+
+#ifndef MENUGENERATOR
+#define MENUGENERATOR
+
+#include <iostream>
+#include <string>
+#include <map>
+
+#include "common_defines.h"
+
+/*! 
+* @namespace dwf_utils
+* @brief A namespace used to regroup all utilitary functions or classes spanning through multiple applications
+*/
+namespace dwf_utils
+{
+	/*! \class menuGenerator
+	* \brief Class allowing an automatic separation of a big file writing into smaller files
+	*
+	* Class used to automatically split writing into several files to reduce the impact of file corruption or program bugs.
+	* 
+	*/
+	class menuGenerator
+	{
+	public:
+		menuGenerator(std::string menuStart = "Dwarves shall kill you \nFor you did'nt find a better menu introduction", std::string quit = "q");
+
+		int add_Action(std::string actionId, void (*callback)(void));
+
+		int startMenu();
+
+	protected:
+		void quit();
+
+		std::string m_menuStart;
+		std::map<std::string, void (*)(void)> m_menu;
+		bool m_quit;
+	};
+}
+
+#endif
+
+//  ______________________________
+// |                              |
+// |    ______________________    |
+// |   |                      |   |
+// |   |         sign         |   |
+// |   |        coding        |   |
+// |   |        dw@rf         |   |
+// |   |         1.0          |   |
+// |   |______________________|   |
+// |                              |
+// |______________________________|
+//               |  |           
+//               |  |             
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |  |
+//               |__|

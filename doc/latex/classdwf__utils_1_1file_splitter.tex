@@ -1,0 +1,202 @@
+\hypertarget{classdwf__utils_1_1file_splitter}{\section{dwf\-\_\-utils\-:\-:file\-Splitter \-Class \-Reference}
+\label{classdwf__utils_1_1file_splitter}\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}}
+}
+
+
+\-Class allowing an automatic separation of a big file writing into smaller files.  
+
+
+
+
+{\ttfamily \#include $<$include/file\-Splitter.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classdwf__utils_1_1file_splitter_a27918f5fa4901061ed6d3253f81cb2df}{file\-Splitter} (std\-::string base\-Name, std\-::string extension, unsigned long file\-Size)
+\begin{DoxyCompactList}\small\item\em \-Constructor of the \hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} class. \end{DoxyCompactList}\item 
+virtual \hyperlink{classdwf__utils_1_1file_splitter_a6990a38b7784065e7165b0ab99077d54}{$\sim$file\-Splitter} ()
+\begin{DoxyCompactList}\small\item\em \-Destructor of the \hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} class. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classdwf__utils_1_1file_splitter_a6182c9c9591ef7987d976b92c94372a1}{change\-File} ()
+\begin{DoxyCompactList}\small\item\em \-Perform change file to which write. \end{DoxyCompactList}\item 
+bool \hyperlink{classdwf__utils_1_1file_splitter_ad3e714de53d3ba6feb52f2ef0b9acc59}{get\-Status} () const 
+\begin{DoxyCompactList}\small\item\em \-Know if file is available for writing. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\\hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} \& \hyperlink{classdwf__utils_1_1file_splitter_a0d36c6b9bbcb2399fad313b468d455ec}{operator$<$$<$} (\-T const \&data)
+\begin{DoxyCompactList}\small\item\em \-Declaration of operator$<$$<$. \end{DoxyCompactList}\item 
+\hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} \& \hyperlink{classdwf__utils_1_1file_splitter_a117a762a531b8472f865d5dc3b1e615d}{operator$<$$<$} (std\-::ostream \&($\ast$pf)(std\-::ostream \&))
+\begin{DoxyCompactList}\small\item\em \-Overload of operator$<$$<$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classdwf__utils_1_1file_splitter_a4fd2d84c91ac951a6286eb8d8a09ea7f}{add\-Dot} ()
+\begin{DoxyCompactList}\small\item\em \-Add dot to extension. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::ofstream \hyperlink{classdwf__utils_1_1file_splitter_a52f6c1e3f991d724a0388479b1311eba}{m\-\_\-file}
+\item 
+std\-::string \hyperlink{classdwf__utils_1_1file_splitter_a975b8db38b39f88d3169465681004b3f}{m\-\_\-base\-Name}
+\item 
+std\-::string \hyperlink{classdwf__utils_1_1file_splitter_a41488fca3cd05509e44b83158bc928c2}{m\-\_\-extension}
+\item 
+unsigned long \hyperlink{classdwf__utils_1_1file_splitter_a61e584140f04b3a16f7c15a3df9e4cae}{m\-\_\-file\-Size}
+\item 
+unsigned long \hyperlink{classdwf__utils_1_1file_splitter_a298fb3ee2f1a79399402cd325de1d2b7}{m\-\_\-written}
+\item 
+unsigned long \hyperlink{classdwf__utils_1_1file_splitter_a8b18118f349455a6b7eeacb32005a871}{m\-\_\-file\-Nb}
+\item 
+bool \hyperlink{classdwf__utils_1_1file_splitter_a0222a87f2cd6079820e08313503e199e}{m\-\_\-status}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class allowing an automatic separation of a big file writing into smaller files. 
+
+\-Class used to automatically split writing into several files to reduce the impact of file corruption or program bugs. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classdwf__utils_1_1file_splitter_a27918f5fa4901061ed6d3253f81cb2df}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!file\-Splitter@{file\-Splitter}}
+\index{file\-Splitter@{file\-Splitter}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{file\-Splitter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dwf\-\_\-utils\-::file\-Splitter\-::file\-Splitter} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{base\-Name, }
+\item[{std\-::string}]{extension, }
+\item[{unsigned long}]{file\-Size}
+\end{DoxyParamCaption}
+)}}\label{classdwf__utils_1_1file_splitter_a27918f5fa4901061ed6d3253f81cb2df}
+
+
+\-Constructor of the \hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} class. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em base\-Name} & \-: base name of the files. \-All files wil be named base\-Name\-\_\-$<$\-Id$>$.\-extension \\
+\hline
+{\em extension} & \-: extension of the files. \-All files wil be named base\-Name\-\_\-$<$\-Id$>$.\-extension. \-Dot is automatically added befor extension if not present. \\
+\hline
+{\em file\-Size} & \-: \-Maximum number of operator$<$$<$ calls before triggering writing to a new file\\
+\hline
+\end{DoxyParams}
+\-Constructor of the \hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} class allowing to initialize our class and open the base\-Name\-\_\-0.\-extension file. \hypertarget{classdwf__utils_1_1file_splitter_a6990a38b7784065e7165b0ab99077d54}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!$\sim$file\-Splitter@{$\sim$file\-Splitter}}
+\index{$\sim$file\-Splitter@{$\sim$file\-Splitter}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{$\sim$file\-Splitter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dwf\-\_\-utils\-::file\-Splitter\-::$\sim$file\-Splitter} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a6990a38b7784065e7165b0ab99077d54}
+
+
+\-Destructor of the \hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} class. 
+
+\-Destructor of the \hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} class. \-Closes the last file if it is opened. \-Virtual function. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classdwf__utils_1_1file_splitter_a4fd2d84c91ac951a6286eb8d8a09ea7f}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!add\-Dot@{add\-Dot}}
+\index{add\-Dot@{add\-Dot}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{add\-Dot}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf dwf\-\_\-utils\-::file\-Splitter\-::add\-Dot} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a4fd2d84c91ac951a6286eb8d8a09ea7f}
+
+
+\-Add dot to extension. 
+
+\-Check if file extension starts with a dot and add it if its not the case. \hypertarget{classdwf__utils_1_1file_splitter_a6182c9c9591ef7987d976b92c94372a1}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!change\-File@{change\-File}}
+\index{change\-File@{change\-File}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{change\-File}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dwf\-\_\-utils\-::file\-Splitter\-::change\-File} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a6182c9c9591ef7987d976b92c94372a1}
+
+
+\-Perform change file to which write. 
+
+\-Perform change file from the file named base\-Name\-\_\-$<$\-Id$>$.\-extension to the file named base\-Name\-\_\-$<$\-Id+1$>$.extension. \-This method is automatically called in operator$<$$<$ when the number of operator$<$$<$ calls reaches the desired limit. \-But the user may also trigger changes by himself. \-Virtual function. \hypertarget{classdwf__utils_1_1file_splitter_ad3e714de53d3ba6feb52f2ef0b9acc59}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!get\-Status@{get\-Status}}
+\index{get\-Status@{get\-Status}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{get\-Status}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dwf\-\_\-utils\-::file\-Splitter\-::get\-Status} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classdwf__utils_1_1file_splitter_ad3e714de53d3ba6feb52f2ef0b9acc59}
+
+
+\-Know if file is available for writing. 
+
+\begin{DoxyReturn}{\-Returns}
+\-T\-R\-U\-E if file can be used for writing and \-F\-A\-L\-S\-E otherwise
+\end{DoxyReturn}
+\-Know if file is available for writing and especially if the ofstream flux is valid. \-Constant function. \hypertarget{classdwf__utils_1_1file_splitter_a0d36c6b9bbcb2399fad313b468d455ec}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf file\-Splitter}\& dwf\-\_\-utils\-::file\-Splitter\-::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{\-T const \&}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a0d36c6b9bbcb2399fad313b468d455ec}
+
+
+\-Declaration of operator$<$$<$. 
+
+
+\begin{DoxyTemplParams}{\-Template Parameters}
+{\em \-T} & \-: type of the data to wrtie \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{\-Parameters}
+{\em data} & \-: data to write in file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A reference to the modified \hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} object allowing to channel multiple insertion in flux
+\end{DoxyReturn}
+operator$<$$<$ allowing to write into our splitted files and checks if file change must be performed. \-T must contain operator$<$$<$. \hypertarget{classdwf__utils_1_1file_splitter_a117a762a531b8472f865d5dc3b1e615d}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf file\-Splitter}\& dwf\-\_\-utils\-::file\-Splitter\-::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&($\ast$)(std\-::ostream \&)}]{pf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a117a762a531b8472f865d5dc3b1e615d}
+
+
+\-Overload of operator$<$$<$. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em pf} & \-: functor on a manipulator of ostream fluxes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A reference to the modified \hyperlink{classdwf__utils_1_1file_splitter}{file\-Splitter} object allowing to channel multiple insertion in flux
+\end{DoxyReturn}
+\-Overload of operator$<$$<$ allowing to use manipulators such as endl. 
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classdwf__utils_1_1file_splitter_a975b8db38b39f88d3169465681004b3f}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!m\-\_\-base\-Name@{m\-\_\-base\-Name}}
+\index{m\-\_\-base\-Name@{m\-\_\-base\-Name}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{m\-\_\-base\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf dwf\-\_\-utils\-::file\-Splitter\-::m\-\_\-base\-Name}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a975b8db38b39f88d3169465681004b3f}
+\-Base name of files \hypertarget{classdwf__utils_1_1file_splitter_a41488fca3cd05509e44b83158bc928c2}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!m\-\_\-extension@{m\-\_\-extension}}
+\index{m\-\_\-extension@{m\-\_\-extension}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{m\-\_\-extension}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf dwf\-\_\-utils\-::file\-Splitter\-::m\-\_\-extension}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a41488fca3cd05509e44b83158bc928c2}
+\-Extension of files \hypertarget{classdwf__utils_1_1file_splitter_a52f6c1e3f991d724a0388479b1311eba}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!m\-\_\-file@{m\-\_\-file}}
+\index{m\-\_\-file@{m\-\_\-file}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{m\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ofstream {\bf dwf\-\_\-utils\-::file\-Splitter\-::m\-\_\-file}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a52f6c1e3f991d724a0388479b1311eba}
+\-Flux to file \hypertarget{classdwf__utils_1_1file_splitter_a8b18118f349455a6b7eeacb32005a871}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!m\-\_\-file\-Nb@{m\-\_\-file\-Nb}}
+\index{m\-\_\-file\-Nb@{m\-\_\-file\-Nb}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{m\-\_\-file\-Nb}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf dwf\-\_\-utils\-::file\-Splitter\-::m\-\_\-file\-Nb}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a8b18118f349455a6b7eeacb32005a871}
+\-Number of files already complete \hypertarget{classdwf__utils_1_1file_splitter_a61e584140f04b3a16f7c15a3df9e4cae}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!m\-\_\-file\-Size@{m\-\_\-file\-Size}}
+\index{m\-\_\-file\-Size@{m\-\_\-file\-Size}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{m\-\_\-file\-Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf dwf\-\_\-utils\-::file\-Splitter\-::m\-\_\-file\-Size}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a61e584140f04b3a16f7c15a3df9e4cae}
+\-Maximal number of operator$<$$<$ calls \hypertarget{classdwf__utils_1_1file_splitter_a0222a87f2cd6079820e08313503e199e}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!m\-\_\-status@{m\-\_\-status}}
+\index{m\-\_\-status@{m\-\_\-status}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{m\-\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dwf\-\_\-utils\-::file\-Splitter\-::m\-\_\-status}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a0222a87f2cd6079820e08313503e199e}
+\-Indicates status of class \hypertarget{classdwf__utils_1_1file_splitter_a298fb3ee2f1a79399402cd325de1d2b7}{\index{dwf\-\_\-utils\-::file\-Splitter@{dwf\-\_\-utils\-::file\-Splitter}!m\-\_\-written@{m\-\_\-written}}
+\index{m\-\_\-written@{m\-\_\-written}!dwf_utils::fileSplitter@{dwf\-\_\-utils\-::file\-Splitter}}
+\subsubsection[{m\-\_\-written}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf dwf\-\_\-utils\-::file\-Splitter\-::m\-\_\-written}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classdwf__utils_1_1file_splitter_a298fb3ee2f1a79399402cd325de1d2b7}
+\-Current number of operator$<$$<$ calls 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{file_splitter_8h}{file\-Splitter.\-h}\item 
+src/\hyperlink{file_splitter_8cpp}{file\-Splitter.\-cpp}\end{DoxyCompactItemize}

@@ -2,8 +2,8 @@
  * @file Version.h
  * @brief Version information about DwfUtil lib 
  * @author Sign Coding Dwarf
- * @version 1.0
- * @date 06 May 2016
+ * @version 2.0
+ * @date 15 May 2016
  *
  * Definition of DwfUtils version constants and numeric form.
  *
@@ -55,7 +55,7 @@ limitations under the License.
 * @brief Version as a numeric constant for compilation purport
 *
 * To check if library has indeed current version do 
-* \a \#if \a DWFUTILS_VERSION_NUMERIC==55776168
+* \a \#if \a DWFUTILS_VERSION_NUMERIC==111552336
 *
 */
 #define DWFUTILS_VERSION_NUMERIC DWFUTILS_VERSION

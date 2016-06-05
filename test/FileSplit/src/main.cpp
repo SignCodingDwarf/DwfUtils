@@ -33,6 +33,37 @@ limitations under the License.
 
 using namespace std;
 
+class coordinates
+{
+public:
+	coordinates(float x=1.0, float y=2.1, float z=0.0) : m_x(x), m_y(y),m_z(z)
+	{
+	}
+
+	void display(ostream& flux) const
+	{
+		flux << m_x << " " << m_y << " " << m_z;
+	}
+
+	void changeCoord(float dx, float dy, float dz)
+	{
+		m_x += dx;
+		m_y += dy;
+		m_z += dz;
+	}
+
+protected:
+	float m_x;
+	float m_y;
+	float m_z;
+};
+
+ostream& operator<<( ostream &flux, coordinates const& coord )
+{
+	coord.display(flux);
+	return flux;
+}
+
 /*!
 * @brief Program Entry point
 * @return EXIT_SUCCESS
@@ -41,19 +72,21 @@ using namespace std;
 int main()
 {
 	cout << "Test file_Split" << endl;
-	dwf_utils::fileSplitter fS("logs/testFile", ".txt", 10);
-	
+	dwf_utils::fileSplitter fS("logs/testFile", ".txt", 20);
+	coordinates c;
+
 	for(unsigned int i = 0; i < 20; ++i)
 	{
 		//cout << i << endl;
 		if(fS.getStatus())
 		{
-			fS << i << endl;
+			fS << i << " " << c << endl;
 		}
 		else
 		{
 			cout << "Error" << endl;
 		}
+		c.changeCoord(0.5, -0.2, 0.1);
 	}
 
 	return EXIT_SUCCESS;

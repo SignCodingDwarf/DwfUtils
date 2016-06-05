@@ -1,0 +1,27 @@
+\hypertarget{file_splitter_8cpp}{\section{src/file\-Splitter.cpp \-File \-Reference}
+\label{file_splitter_8cpp}\index{src/file\-Splitter.\-cpp@{src/file\-Splitter.\-cpp}}
+}
+
+
+\-Class used to manage storing of big data in several files.  
+
+
+{\ttfamily \#include \char`\"{}file\-Splitter.\-h\char`\"{}}\*
+\subsection*{\-Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacedwf__utils}{dwf\-\_\-utils}
+\begin{DoxyCompactList}\small\item\em \-A namespace used to regroup all utilitary functions or classes spanning through multiple applications. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class used to manage storing of big data in several files. \begin{DoxyAuthor}{\-Author}
+\-Sign \-Coding \-Dwarf 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{\-Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{\-Date}
+15 \-May 2016
+\end{DoxyDate}
+\-Implementation of the class used to store a big set of data in multiple subfiles to get smaller files and avoid too much data loss due to file corruption or bugs. \-The amount of data to store is determined by the number of call to operator$<$$<$. \-User may also manually trigger a file change. 

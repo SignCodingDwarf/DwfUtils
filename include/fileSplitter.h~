@@ -6,7 +6,9 @@
  * @date 15 May 2016
  *
  * Definition of the class used to store a big set of data in multiple subfiles to get smaller files and avoid too much data loss due to file corruption or program bugs.
- * The amount of data to store is determined by the number of call to operator<<. User may also manually trigger a file change.
+ * The amount of data to store is determined by the number of call to operator<<. User may also manually trigger a file change. <br>
+ * To test if it is available with your library version use <br>
+ * \a \#if \a DWFUTILS_VERSION_NUMERIC>=111552336
  *
  */
 
@@ -43,17 +45,63 @@ limitations under the License.
 */
 namespace dwf_utils
 {
+	/*! \class fileSplitter
+	* \brief Class allowing an automatic separation of a big file writing into smaller files
+	*
+	* Class used to automatically split writing into several files to reduce the impact of file corruption or program bugs.
+	* 
+	*/
 	class fileSplitter
 	{
 	public:
+		/*!
+		* @brief Constructor of the fileSplitter class
+		* @param baseName : base name of the files. All files wil be named baseName_<Id>.extension
+		* @param extension : extension of the files. All files wil be named baseName_<Id>.extension. Dot is automatically added befor extension if not present.
+		* @param fileSize : Maximum number of operator<< calls before triggering writing to a new file
+		*
+		* Constructor of the fileSplitter class allowing to initialize our class and open the baseName_0.extension file. 
+		*
+		*/
 		fileSplitter(std::string baseName, std::string extension, unsigned long fileSize);  
 
+		/*!
+		* @brief Destructor of the fileSplitter class
+		*
+		* Destructor of the fileSplitter class. Closes the last file if it is opened.
+		* Virtual function.
+		*
+		*/
 		virtual ~fileSplitter();
 
+		/*!
+		* @brief Perform change file to which write
+		*
+		* Perform change file from the file named baseName_<Id>.extension to the file named baseName_<Id+1>.extension. This method is automatically called in operator<< when the number of operator<< calls reaches the desired limit. But the user may also trigger changes by himself.
+		* Virtual function.
+		*
+		*/
 		virtual int changeFile();
 
+		/*!
+		* @brief Know if file is available for writing
+		* @return TRUE if file can be used for writing and FALSE otherwise
+		*
+		* Know if file is available for writing and especially if the ofstream flux is valid.
+		* Constant function.
+		*
+		*/
 		bool getStatus() const;
 
+		/*!
+		* @brief Declaration of operator<<
+		* @tparam T : type of the data to wrtie
+		* @param data : data to write in file
+		* @return A reference to the modified fileSplitter object allow to channel multiple insertion in flux
+		*
+		* operator<< allowing to write into our splitted files and checks if file change must be performed. T must contain operator<<.
+		*
+		*/
 		template <class T>
 		fileSplitter& operator<<(T const& data)
 		{
@@ -69,6 +117,14 @@ namespace dwf_utils
 			return *this;
 		}
 
+		/*!
+		* @brief Overload of operator<<
+		* @param pf : functor on a manipulator of ostream fluxes.
+		* @return A reference to the modified fileSplitter object allowing to channel multiple insertion in flux
+		*
+		* Overload of operator<< allowing to use manipulators such as endl.
+		*
+		*/
 		fileSplitter& operator<<(std::ostream& (*pf)(std::ostream&))
 		{
 			if(m_status)
@@ -92,6 +148,14 @@ namespace dwf_utils
 		unsigned long m_written; /*!< Current number of operator<< calls */
 		unsigned long m_fileNb; /*!< Number of files already complete */
 		bool m_status; /*!< Indicates status of class */
+
+		/*!
+		* @brief Add dot to extension
+		*
+		* Check if file extension starts with a dot and add it if its not the case.
+		*
+		*/
+		void addDot();
 	};
 }
 
