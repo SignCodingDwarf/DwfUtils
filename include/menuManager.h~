@@ -104,7 +104,7 @@ namespace dwf_utils
 		std::string m_menuStart; /*!< Welcome message of menu */
 		std::map<std::string, std::pair<void (*)(void), std::string> > m_menuActions; /*!< Map of actions associated with their description and Id */
 		bool m_quit; /*!< Quit menu flag */
-		std::string m_quitId; /*!< Welcome message of menu */
+		std::string m_quitId; /*!< Id of the quit action */
 	};
 }
 

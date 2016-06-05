@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dummyfail',['dummyFail',['../classdummy_fail.html#afe5f1309f6ac5e6a0e4bf4fc09c7516f',1,'dummyFail']]]
+  ['display',['display',['../classcoordinates.html#a38d716641cacff0d6c95ce05ae61dc5a',1,'coordinates']]]
 ];

@@ -33,7 +33,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">TestDirParser
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">2.0</span>
    </div>
    <div id="projectbrief">Test of dirParser class and use cases examples</div>
   </td>
@@ -105,6 +105,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br/>
 <code>#include &quot;dirParser.h&quot;</code><br/>
+<code>#include &quot;menuManager.h&quot;</code><br/>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -112,14 +113,20 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Example of class inheriting from dirParser to define application specific directories.  <a href="classapplication_dir.html#details">Plus de détails...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a48ad5ec16add7ca520a0b76fdac34b86">testDirParser</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Basic parsing test.  <a href="#a48ad5ec16add7ca520a0b76fdac34b86"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ade879928e1101f140fd5d9c70002b718">testReload</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reload example.  <a href="#ade879928e1101f140fd5d9c70002b718"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a91e00dfcc5a512f4c14414a681dc7e5f">testInheritance</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inheritance example.  <a href="#a91e00dfcc5a512f4c14414a681dc7e5f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Program Entry point.  <a href="#ae66f6b31b5ad750f1fe042a706a4e3d4"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Test of dirParser class. </p>
 <dl class="author"><dt><b>Auteur:</b></dt><dd>Sign Coding Dwarf </dd></dl>
-<dl class="version"><dt><b>Version:</b></dt><dd>1.0 </dd></dl>
-<dl class="date"><dt><b>Date:</b></dt><dd>06 May 2016</dd></dl>
+<dl class="version"><dt><b>Version:</b></dt><dd>2.0 </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>05 June 2016</dd></dl>
 <p>Test program for dirParser class and example of inheritance to define application folders. <br/>
  To see differences between folders do the following (with <em>&lt;location&gt;</em> path to test/DirParser) <br/>
  <em>cd</em> <em>&lt;location&gt;/test</em> <br/>
@@ -144,6 +151,63 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a48ad5ec16add7ca520a0b76fdac34b86"></a><!-- doxytag: member="main.cpp::testDirParser" ref="a48ad5ec16add7ca520a0b76fdac34b86" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="main_8cpp.html#a48ad5ec16add7ca520a0b76fdac34b86">testDirParser</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Basic parsing test. </p>
+<p>Basic test with succeding parsing at class creation </p>
+
+</div>
+</div>
+<a class="anchor" id="a91e00dfcc5a512f4c14414a681dc7e5f"></a><!-- doxytag: member="main.cpp::testInheritance" ref="a91e00dfcc5a512f4c14414a681dc7e5f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="main_8cpp.html#a91e00dfcc5a512f4c14414a681dc7e5f">testInheritance</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Inheritance example. </p>
+<p>Illustrates how diParser class can be inherited to define application specific folders </p>
+
+</div>
+</div>
+<a class="anchor" id="ade879928e1101f140fd5d9c70002b718"></a><!-- doxytag: member="main.cpp::testReload" ref="ade879928e1101f140fd5d9c70002b718" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="main_8cpp.html#ade879928e1101f140fd5d9c70002b718">testReload</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reload example. </p>
+<p>Example of failed load due to insufficient path size allowed and shows how update can be called to reload paths </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -164,7 +228,7 @@ Fonctions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a>      </li>
 
-    <li class="footer">Généré le Samedi Mai 7 2016 15:31:07 pour TestDirParser par
+    <li class="footer">Généré le Dimanche Juin 5 2016 17:34:13 pour TestDirParser par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

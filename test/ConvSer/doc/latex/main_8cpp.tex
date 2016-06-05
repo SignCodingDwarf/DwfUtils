@@ -10,6 +10,7 @@
 {\ttfamily \#include \char`\"{}common\-\_\-defines.\-h\char`\"{}}\*
 {\ttfamily \#include \char`\"{}serial\-Utils.\-h\char`\"{}}\*
 {\ttfamily \#include \char`\"{}\-Version.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}menu\-Manager.\-h\char`\"{}}\*
 \subsection*{\-Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,6 +19,14 @@ class \hyperlink{classdummy_fail}{dummy\-Fail}
 \subsection*{\-Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \hyperlink{main_8cpp_a03a8d98e62c3438e5f36eb5b46b2dffa}{test\-Conv\-Utils} ()
+\begin{DoxyCompactList}\small\item\em \-Test of conversion functions. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_ae0cc740d72aab8e8cba2b955b3bd63bd}{test\-Conv\-Issue} ()
+\begin{DoxyCompactList}\small\item\em \-Issues of conversion functions. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_a3b603bf7930c1cbe718a3fa7528e17ee}{test\-Serialization} ()
+\begin{DoxyCompactList}\small\item\em \-Serialization example. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_a9a669b014fdfe5e20052514f8c1e35ba}{test\-Deserialization} ()
+\begin{DoxyCompactList}\small\item\em \-Deserialization example. \end{DoxyCompactList}\item 
 int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \begin{DoxyCompactList}\small\item\em \-Program \-Entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -27,10 +36,10 @@ int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \-Sign \-Coding \-Dwarf 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{\-Version}
-1.\-0 
+2.\-0 
 \end{DoxyVersion}
 \begin{DoxyDate}{\-Date}
-06 \-May 2016
+05 \-June 2016
 \end{DoxyDate}
 \-Test program and use cases of conv\-Utils.\-h and serial\-Utils.\-h methods 
 
@@ -49,3 +58,48 @@ int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \begin{DoxyReturn}{\-Returns}
 \-E\-X\-I\-T\-\_\-\-S\-U\-C\-C\-E\-S\-S 
 \end{DoxyReturn}
+\hypertarget{main_8cpp_ae0cc740d72aab8e8cba2b955b3bd63bd}{\index{main.\-cpp@{main.\-cpp}!test\-Conv\-Issue@{test\-Conv\-Issue}}
+\index{test\-Conv\-Issue@{test\-Conv\-Issue}!main.cpp@{main.\-cpp}}
+\subsubsection[{test\-Conv\-Issue}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf test\-Conv\-Issue} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_ae0cc740d72aab8e8cba2b955b3bd63bd}
+
+
+\-Issues of conversion functions. 
+
+\-Illustrate the need for converted classes to have operator$<$$<$, operator$>$$>$ and default constructor. \-Uncomment the appropriate lines to create a compile error. \hypertarget{main_8cpp_a03a8d98e62c3438e5f36eb5b46b2dffa}{\index{main.\-cpp@{main.\-cpp}!test\-Conv\-Utils@{test\-Conv\-Utils}}
+\index{test\-Conv\-Utils@{test\-Conv\-Utils}!main.cpp@{main.\-cpp}}
+\subsubsection[{test\-Conv\-Utils}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf test\-Conv\-Utils} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a03a8d98e62c3438e5f36eb5b46b2dffa}
+
+
+\-Test of conversion functions. 
+
+\-Basic examples of conversion functions \hypertarget{main_8cpp_a9a669b014fdfe5e20052514f8c1e35ba}{\index{main.\-cpp@{main.\-cpp}!test\-Deserialization@{test\-Deserialization}}
+\index{test\-Deserialization@{test\-Deserialization}!main.cpp@{main.\-cpp}}
+\subsubsection[{test\-Deserialization}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf test\-Deserialization} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a9a669b014fdfe5e20052514f8c1e35ba}
+
+
+\-Deserialization example. 
+
+\-Illustrates basic deserialization calls and especially using position update to deserialize in a loop \hypertarget{main_8cpp_a3b603bf7930c1cbe718a3fa7528e17ee}{\index{main.\-cpp@{main.\-cpp}!test\-Serialization@{test\-Serialization}}
+\index{test\-Serialization@{test\-Serialization}!main.cpp@{main.\-cpp}}
+\subsubsection[{test\-Serialization}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf test\-Serialization} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a3b603bf7930c1cbe718a3fa7528e17ee}
+
+
+\-Serialization example. 
+
+\-Illustrates basic serialization calls and use of max size parameter 

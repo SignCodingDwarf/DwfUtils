@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>TestConvSer: src/main.cpp File Reference</title>
+<title>TestFIleSplit: src/main.cpp File Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -32,10 +32,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">TestConvSer
+   <div id="projectname">TestFIleSplit
    &#160;<span id="projectnumber">1.0</span>
    </div>
-   <div id="projectbrief">Test program of conversion and serialization functions of DwfUtils lib</div>
+   <div id="projectbrief">Test program of fileSplit class of DwfUtils lib</div>
   </td>
   
   
@@ -101,28 +101,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Test of convUtils.h and serialUtils.h.  
+<p>Test of fileSplitter.h.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br/>
 <code>#include &quot;<a class="el" href="common__defines_8h_source.html">common_defines.h</a>&quot;</code><br/>
-<code>#include &quot;serialUtils.h&quot;</code><br/>
-<code>#include &quot;Version.h&quot;</code><br/>
+<code>#include &quot;fileSplitter.h&quot;</code><br/>
+<code>#include &quot;menuManager.h&quot;</code><br/>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdummy_fail.html">dummyFail</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to illustrate compile errors in conversion.  <a href="classdummy_fail.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcoordinates.html">coordinates</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Example class containing coordinates.  <a href="classcoordinates.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#adeab9fb285ed1ddcbc781eaf08fdf647">operator&lt;&lt;</a> (ostream &amp;flux, <a class="el" href="classcoordinates.html">coordinates</a> const &amp;coord)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5c2fe12c935abb3529c2a374d579c0f4">testWrite</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Example of write file splitting.  <a href="#a5c2fe12c935abb3529c2a374d579c0f4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Program Entry point.  <a href="#ae66f6b31b5ad750f1fe042a706a4e3d4"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Test of convUtils.h and serialUtils.h. </p>
+<div class="textblock"><p>Test of fileSplitter.h. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Sign Coding Dwarf </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>1.0 </dd></dl>
-<dl class="date"><dt><b>Date:</b></dt><dd>06 May 2016</dd></dl>
-<p>Test program and use cases of convUtils.h and serialUtils.h methods </p>
+<dl class="date"><dt><b>Date:</b></dt><dd>05 June 2016</dd></dl>
+<p>Test program and use cases of fileSplitter.h methods </p>
 </div><hr/><h2>Function Documentation</h2>
 <a class="anchor" id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a><!-- doxytag: member="main.cpp::main" ref="ae66f6b31b5ad750f1fe042a706a4e3d4" args="()" -->
 <div class="memitem">
@@ -140,6 +143,52 @@ Functions</h2></td></tr>
 
 <p>Program Entry point. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>EXIT_SUCCESS </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adeab9fb285ed1ddcbc781eaf08fdf647"></a><!-- doxytag: member="main.cpp::operator&lt;&lt;" ref="adeab9fb285ed1ddcbc781eaf08fdf647" args="(ostream &amp;flux, coordinates const &amp;coord)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>flux</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcoordinates.html">coordinates</a> const &amp;&#160;</td>
+          <td class="paramname"><em>coord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5c2fe12c935abb3529c2a374d579c0f4"></a><!-- doxytag: member="main.cpp::testWrite" ref="a5c2fe12c935abb3529c2a374d579c0f4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="main_8cpp.html#a5c2fe12c935abb3529c2a374d579c0f4">testWrite</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Example of write file splitting. </p>
+<p>Test of file splitter class with size condition on the number of operator&lt; calls. </p>
 
 </div>
 </div>
@@ -163,7 +212,7 @@ Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a>      </li>
 
-    <li class="footer">Generated on Sat May 7 2016 15:24:29 for TestConvSer by
+    <li class="footer">Generated on Sun Jun 5 2016 19:08:35 for TestFIleSplit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

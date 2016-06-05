@@ -2,12 +2,12 @@
  * @file main.cpp
  * @brief Test of dirParser class
  * @author Sign Coding Dwarf
- * @version 1.0
- * @date 06 May 2016
+ * @version 2.0
+ * @date 05 June 2016
  *
- * Test program for dirParser class and example of inheritance to define application folders.
- * To see differences between folders do the following (with \a \<location\> path to test/DirParser)
- * \a cd \a \<location\>/test
+ * Test program for dirParser class and example of inheritance to define application folders. <br>
+ * To see differences between folders do the following (with \a \<location\> path to test/DirParser) <br>
+ * \a cd \a \<location\>/test <br>
  * \a DirParser/TestDirParser
  *
  */
@@ -84,13 +84,14 @@ protected:
 };
 
 /*!
-* @brief Program Entry point
-* @return EXIT_SUCCESS
+* @brief Basic parsing test
+*
+* Basic test with succeding parsing at class creation
 *
 */
-int main()
+void testDirParser()
 {
-	cout << "Test of dirParser class" << endl;
+	cout << "Basic dirParser test" << endl << endl;
 
 	// Simple example
 	dwf_utils::dirParser fP(500);
@@ -103,8 +104,17 @@ int main()
 	{
 		cout << "Could not find application folders" << endl;
 	}
+}
 
-	cout << "*****************************" << endl << endl;
+/*!
+* @brief Reload example
+*
+* Example of failed load due to insufficient path size allowed and shows how update can be called to reload paths
+*
+*/
+void testReload()
+{
+	cout << "dirParser size error and reload example" << endl << endl;
 
 	// Example with error and reload
 	dwf_utils::dirParser fP2(5); //Insufficient path length
@@ -129,8 +139,17 @@ int main()
 		}
 
 	}	
+}
 
-	cout << "*****************************" << endl << endl;
+/*!
+* @brief Inheritance example
+*
+* Illustrates how diParser class can be inherited to define application specific folders
+*
+*/
+void testInheritance()
+{
+	cout << "Inheritance example" << endl << endl;
 
 	// Example with inherited class
 	applicationDir aD(100);
@@ -142,6 +161,28 @@ int main()
 		cout << "Log Directory : " << aD.getLog() << endl; // Should display <location>/test/log/ 
 		cout << "Test Files Directory : " << aD.getTest() << endl; // Should display <location>/test/DirParser/test/ 
 	}
+}
+
+/*!
+* @brief Program Entry point
+* @return EXIT_SUCCESS
+*
+*/
+int main()
+{
+	string menuHead = "************************************************\n";
+	      menuHead += "*                                              *\n";   
+	      menuHead += "*            Test of dirParser class           *\n";   
+	      menuHead += "*                                              *\n";
+	      menuHead += "************************************************";      	
+
+	dwf_utils::menuManager menu(menuHead);
+
+	menu.addAction("1", &testDirParser, "Basic dirParser test");
+	menu.addAction("2", &testReload, "dirParser size error and reload example");
+	menu.addAction("3", &testInheritance, "Inheritance example");
+
+	menu.enterMenu();	
 
 	return EXIT_SUCCESS;
 }

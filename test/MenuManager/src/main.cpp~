@@ -3,9 +3,9 @@
  * @brief Test of menuManager.h
  * @author Sign Coding Dwarf
  * @version 1.0
- * @date 15 May 2016
+ * @date 05 June 2016
  *
- * Test program and use cases of fileSplitter.h methods 
+ * Test program and use cases of menuManager.h methods 
  *
  */
 
@@ -34,33 +34,81 @@ limitations under the License.
 using namespace std;
 
 /*!
-* @brief Program Entry point
-* @return EXIT_SUCCESS
+* @brief Say Hello
+*
+* Display Hello world from main menu
 *
 */
-
 void Hello()
 {
 	cout << "Hello World" << endl;
 }
 
+/*!
+* @brief Give version
+*
+* Give library version
+*
+*/
 void Version()
 {
-	cout << DWFUTILS_VERSION_NUMERIC << endl;
+	cout << "Library Version : " << DWFUTILS_VERSION_NUMERIC << endl;
 }
 
+/*!
+* @brief Say goodbye
+*
+* Display Goodbye from main menu
+*
+*/
 void Goodbye()
 {
 	cout << "Goodbye" << endl;
 }
 
+/*!
+* @brief Say Hello
+*
+* Display Hello Menu from submenu
+*
+*/
+void SubHello()
+{
+	cout << "Hello Menu" << endl;
+}
+
+
+/*!
+* @brief Say goodbye
+*
+* Display Goodbye from sub menu
+*
+*/
+void SubGoodbye()
+{
+	cout << "Goodbye Sub Menu" << endl;
+}
+
+
+/*!
+* @brief Program Entry point
+* @return EXIT_SUCCESS
+*
+*/
 int main()
 {
 	cout << "Test menuManager" << endl;
-#if DWFUTILS_VERSION_NUMERIC>=111552336
-	dwf_utils::menuManager menu;
+#if DWFUTILS_VERSION_NUMERIC>=111552336 // Example of library version check
+	string menuHead = "************************************************\n";
+	      menuHead += "*                                              *\n";   
+	      menuHead += "*           Test of menuManager class          *\n";   
+	      menuHead += "*                                              *\n";
+	      menuHead += "************************************************";   
+	dwf_utils::menuManager menu(menuHead);
 
-	menu.addAction("")
+	menu.addAction("H", &Hello, "Say Hello");
+	menu.addAction("V", &Version, "Display library version");
+	menu.addAction("GB", &Goodbye, "Say Goodbye");
 
 	menu.enterMenu();
 #else

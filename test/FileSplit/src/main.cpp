@@ -3,7 +3,7 @@
  * @brief Test of fileSplitter.h
  * @author Sign Coding Dwarf
  * @version 1.0
- * @date 15 May 2016
+ * @date 05 June 2016
  *
  * Test program and use cases of fileSplitter.h methods 
  *
@@ -29,10 +29,16 @@ limitations under the License.
 
 #include "common_defines.h"
 #include "fileSplitter.h"
-#include "Version.h"
+#include "menuManager.h"
 
 using namespace std;
 
+/*! \class coordinates
+* \brief Example class containing coordinates
+*
+* Example class that allows to store and display 3D coordinates with an operator<< to be stored in file.
+* 
+*/
 class coordinates
 {
 public:
@@ -65,29 +71,57 @@ ostream& operator<<( ostream &flux, coordinates const& coord )
 }
 
 /*!
+* @brief Example of write file splitting
+*
+* Test of file splitter class with size condition on the number of operator< calls.
+*
+*/
+void testWrite()
+{
+	cout << "Example of write file splitting" << endl << endl;
+
+	cout << "Go in the log folder. You should see 5 files : " << endl;
+	cout << "   - testWriteSplit_0 contains coordinates 0 to 4" << endl;
+	cout << "   - testWriteSplit_1 contains coordinates 5 to 9" << endl;
+	cout << "   - testWriteSplit_2 contains coordinates 10 to 14" << endl;
+	cout << "   - testWriteSplit_3 contains coordinates 15 to 19" << endl;
+	cout << "   - testWriteSplit_4 is empty" << endl;
+
+	dwf_utils::fileSplitter fS("logs/testWriteSplit", ".txt", 20); // Create file
+	coordinates c;
+
+	for(unsigned int i = 0; i < 20; ++i)
+	{
+		if(fS.getStatus()) // Check if file could be opened and is ready for writing
+		{
+			fS << i << " : " << c << endl; // 4 operator<< calls by loop means 5 points are stored in each file
+		}
+		else
+		{
+			cout << "Error, cannot write in file" << endl;
+		}
+		c.changeCoord(0.5, -0.2, 0.1); // Move point
+	}
+}
+
+/*!
 * @brief Program Entry point
 * @return EXIT_SUCCESS
 *
 */
 int main()
 {
-	cout << "Test file_Split" << endl;
-	dwf_utils::fileSplitter fS("logs/testFile", ".txt", 20);
-	coordinates c;
+	string menuHead = "************************************************\n";
+	      menuHead += "*                                              *\n";   
+	      menuHead += "*          Test of fileSplitter class          *\n";   
+	      menuHead += "*                                              *\n";
+	      menuHead += "************************************************";      	
 
-	for(unsigned int i = 0; i < 20; ++i)
-	{
-		//cout << i << endl;
-		if(fS.getStatus())
-		{
-			fS << i << " " << c << endl;
-		}
-		else
-		{
-			cout << "Error" << endl;
-		}
-		c.changeCoord(0.5, -0.2, 0.1);
-	}
+	dwf_utils::menuManager menu(menuHead);
+
+	menu.addAction("1", &testWrite, "Example of write file splitting");
+
+	menu.enterMenu();	
 
 	return EXIT_SUCCESS;
 }

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>TestConvSer: include/common_defines.h File Reference</title>
+<title>TestMenuManager: include/common_defines.h File Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -32,10 +32,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">TestConvSer
+   <div id="projectname">TestMenuManager
    &#160;<span id="projectnumber">1.0</span>
    </div>
-   <div id="projectbrief">Test program of conversion and serialization functions of DwfUtils lib</div>
+   <div id="projectbrief">Test program of menuManager class of DwfUtils lib</div>
   </td>
   
   
@@ -52,7 +52,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -115,12 +114,14 @@ Defines</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Preprocessor to enable debug output.  <a href="#ad72dbcf6d0153db1b8d8a58001feed83"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common__defines_8h.html#a68eda9a36b4ece66123b627ce7640d30">USE_SHARED_POINTERS</a>&#160;&#160;&#160;1</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if shared pointers can be used.  <a href="#a68eda9a36b4ece66123b627ce7640d30"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common__defines_8h.html#a289f6bf30919eb53d0dc5f9851aa71d3">USE_AUTO_LOOPS</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if auto loops can be used.  <a href="#a289f6bf30919eb53d0dc5f9851aa71d3"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Common Macros Definition. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Sign Coding Dwarf </dd></dl>
-<dl class="version"><dt><b>Version:</b></dt><dd>1.0 </dd></dl>
-<dl class="date"><dt><b>Date:</b></dt><dd>21 March 2016</dd></dl>
+<dl class="version"><dt><b>Version:</b></dt><dd>1.1 </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>02 June 2016</dd></dl>
 <p>Definition of macros common to all designed applications </p>
 </div><hr/><h2>Define Documentation</h2>
 <a class="anchor" id="ad72dbcf6d0153db1b8d8a58001feed83"></a><!-- doxytag: member="common_defines.h::DEBUG" ref="ad72dbcf6d0153db1b8d8a58001feed83" args="" -->
@@ -170,6 +171,23 @@ Defines</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a289f6bf30919eb53d0dc5f9851aa71d3"></a><!-- doxytag: member="common_defines.h::USE_AUTO_LOOPS" ref="a289f6bf30919eb53d0dc5f9851aa71d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="common__defines_8h.html#a289f6bf30919eb53d0dc5f9851aa71d3">USE_AUTO_LOOPS</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Check if auto loops can be used. </p>
+<p>Checking if auto loops (i.e. range based syntax and auto keyword in loops) is allowed is done with #if USE_AUTO_LOOPS. By default this choice is determined by compiler support of C++11. However a different choice can be specified using compiling preprocessor flag : <br/>
+ <em>-DUSE_AUTO_LOOPS=&lt;value&gt;</em> </p>
+
+</div>
+</div>
 <a class="anchor" id="a68eda9a36b4ece66123b627ce7640d30"></a><!-- doxytag: member="common_defines.h::USE_SHARED_POINTERS" ref="a68eda9a36b4ece66123b627ce7640d30" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -193,7 +211,7 @@ Defines</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -206,7 +224,7 @@ Defines</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="common__defines_8h.html">common_defines.h</a>      </li>
 
-    <li class="footer">Generated on Sat May 7 2016 15:24:29 for TestConvSer by
+    <li class="footer">Generated on Sun Jun 5 2016 19:06:49 for TestMenuManager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

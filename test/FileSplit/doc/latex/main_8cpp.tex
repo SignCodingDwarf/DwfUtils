@@ -3,36 +3,40 @@
 }
 
 
-\-Test of conv\-Utils.\-h and serial\-Utils.\-h.  
+\-Test of file\-Splitter.\-h.  
 
 
 {\ttfamily \#include $<$iostream$>$}\*
 {\ttfamily \#include \char`\"{}common\-\_\-defines.\-h\char`\"{}}\*
-{\ttfamily \#include \char`\"{}serial\-Utils.\-h\char`\"{}}\*
-{\ttfamily \#include \char`\"{}\-Version.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}file\-Splitter.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}menu\-Manager.\-h\char`\"{}}\*
 \subsection*{\-Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classdummy_fail}{dummy\-Fail}
-\begin{DoxyCompactList}\small\item\em \-Class to illustrate compile errors in conversion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+class \hyperlink{classcoordinates}{coordinates}
+\begin{DoxyCompactList}\small\item\em \-Example class containing coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{\-Functions}
 \begin{DoxyCompactItemize}
 \item 
+ostream \& \hyperlink{main_8cpp_adeab9fb285ed1ddcbc781eaf08fdf647}{operator$<$$<$} (ostream \&flux, \hyperlink{classcoordinates}{coordinates} const \&coord)
+\item 
+void \hyperlink{main_8cpp_a5c2fe12c935abb3529c2a374d579c0f4}{test\-Write} ()
+\begin{DoxyCompactList}\small\item\em \-Example of write file splitting. \end{DoxyCompactList}\item 
 int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \begin{DoxyCompactList}\small\item\em \-Program \-Entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
-\-Test of conv\-Utils.\-h and serial\-Utils.\-h. \begin{DoxyAuthor}{\-Author}
+\-Test of file\-Splitter.\-h. \begin{DoxyAuthor}{\-Author}
 \-Sign \-Coding \-Dwarf 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{\-Version}
 1.\-0 
 \end{DoxyVersion}
 \begin{DoxyDate}{\-Date}
-06 \-May 2016
+05 \-June 2016
 \end{DoxyDate}
-\-Test program and use cases of conv\-Utils.\-h and serial\-Utils.\-h methods 
+\-Test program and use cases of file\-Splitter.\-h methods 
 
 \subsection{\-Function \-Documentation}
 \hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{main.\-cpp@{main.\-cpp}!main@{main}}
@@ -49,3 +53,23 @@ int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \begin{DoxyReturn}{\-Returns}
 \-E\-X\-I\-T\-\_\-\-S\-U\-C\-C\-E\-S\-S 
 \end{DoxyReturn}
+\hypertarget{main_8cpp_adeab9fb285ed1ddcbc781eaf08fdf647}{\index{main.\-cpp@{main.\-cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!main.cpp@{main.\-cpp}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{flux, }
+\item[{{\bf coordinates} const \&}]{coord}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_adeab9fb285ed1ddcbc781eaf08fdf647}
+\hypertarget{main_8cpp_a5c2fe12c935abb3529c2a374d579c0f4}{\index{main.\-cpp@{main.\-cpp}!test\-Write@{test\-Write}}
+\index{test\-Write@{test\-Write}!main.cpp@{main.\-cpp}}
+\subsubsection[{test\-Write}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf test\-Write} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a5c2fe12c935abb3529c2a374d579c0f4}
+
+
+\-Example of write file splitting. 
+
+\-Test of file splitter class with size condition on the number of operator$<$ calls. 

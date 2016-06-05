@@ -8,6 +8,7 @@
 
 {\ttfamily \#include $<$iostream$>$}\*
 {\ttfamily \#include \char`\"{}dir\-Parser.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}menu\-Manager.\-h\char`\"{}}\*
 \subsection*{\-Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,6 +17,12 @@ class \hyperlink{classapplication_dir}{application\-Dir}
 \subsection*{\-Fonctions}
 \begin{DoxyCompactItemize}
 \item 
+void \hyperlink{main_8cpp_a48ad5ec16add7ca520a0b76fdac34b86}{test\-Dir\-Parser} ()
+\begin{DoxyCompactList}\small\item\em \-Basic parsing test. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_ade879928e1101f140fd5d9c70002b718}{test\-Reload} ()
+\begin{DoxyCompactList}\small\item\em \-Reload example. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_a91e00dfcc5a512f4c14414a681dc7e5f}{test\-Inheritance} ()
+\begin{DoxyCompactList}\small\item\em \-Inheritance example. \end{DoxyCompactList}\item 
 int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \begin{DoxyCompactList}\small\item\em \-Program \-Entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -25,10 +32,10 @@ int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \-Sign \-Coding \-Dwarf 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{\-Version}
-1.\-0 
+2.\-0 
 \end{DoxyVersion}
 \begin{DoxyDate}{\-Date}
-06 \-May 2016
+05 \-June 2016
 \end{DoxyDate}
 \-Test program for dir\-Parser class and example of inheritance to define application folders. \par
  \-To see differences between folders do the following (with {\itshape $<$location$>$\/} path to test/\-Dir\-Parser) \par
@@ -50,3 +57,37 @@ int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \begin{DoxyReturn}{\-Renvoie}
 \-E\-X\-I\-T\-\_\-\-S\-U\-C\-C\-E\-S\-S 
 \end{DoxyReturn}
+\hypertarget{main_8cpp_a48ad5ec16add7ca520a0b76fdac34b86}{\index{main.\-cpp@{main.\-cpp}!test\-Dir\-Parser@{test\-Dir\-Parser}}
+\index{test\-Dir\-Parser@{test\-Dir\-Parser}!main.cpp@{main.\-cpp}}
+\subsubsection[{test\-Dir\-Parser}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf test\-Dir\-Parser} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a48ad5ec16add7ca520a0b76fdac34b86}
+
+
+\-Basic parsing test. 
+
+\-Basic test with succeding parsing at class creation \hypertarget{main_8cpp_a91e00dfcc5a512f4c14414a681dc7e5f}{\index{main.\-cpp@{main.\-cpp}!test\-Inheritance@{test\-Inheritance}}
+\index{test\-Inheritance@{test\-Inheritance}!main.cpp@{main.\-cpp}}
+\subsubsection[{test\-Inheritance}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf test\-Inheritance} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a91e00dfcc5a512f4c14414a681dc7e5f}
+
+
+\-Inheritance example. 
+
+\-Illustrates how di\-Parser class can be inherited to define application specific folders \hypertarget{main_8cpp_ade879928e1101f140fd5d9c70002b718}{\index{main.\-cpp@{main.\-cpp}!test\-Reload@{test\-Reload}}
+\index{test\-Reload@{test\-Reload}!main.cpp@{main.\-cpp}}
+\subsubsection[{test\-Reload}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf test\-Reload} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_ade879928e1101f140fd5d9c70002b718}
+
+
+\-Reload example. 
+
+\-Example of failed load due to insufficient path size allowed and shows how update can be called to reload paths 
